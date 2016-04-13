@@ -1,0 +1,22 @@
+{
+  "name": "mobileprice-twoudia-work",
+  "homepage": "http://mobileprice.twoudia.work/",
+  "authors": [
+    "Yannick Lin <yannicklin@twoudia.com>"
+  ],
+  "license": "MIT",
+  "description": "",
+  "main": "",
+  "dependencies": {
+    "d3": "^3.5.16",
+    "topojson": "^1.6.24"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ]
+}
