@@ -9,7 +9,6 @@
     <link href="css/custom.css" rel="stylesheet" />
 </head>
 <body>
-
 <section class='container'>
           <hgroup>
             <h1>Welcome to your PHP application on OpenShift</h1>
@@ -45,24 +44,8 @@ $ git push</pre>
           </section>
           <section class="col-xs-12 col-sm-6 col-md-6">
 
-                <h2>Managing your application</h2>
-
-                <h3>Web Console</h3>
-                <p>You can use the OpenShift web console to enable additional capabilities via cartridges, add collaborator access authorizations, designate custom domain aliases, and manage domain memberships.</p>
-
-                <h3>Command Line Tools</h3>
-                <p>Installing the <a href="https://developers.openshift.com/en/managing-client-tools.html">OpenShift RHC client tools</a> allows you complete control of your cloud environment. Read more on how to manage your application from the command line in our <a href="https://www.openshift.com/user-guide">User Guide</a>.
-                </p>
-
-                <h2>Development Resources</h2>
-                  <ul>
-                    <li><a href="https://developers.openshift.com/en/php-overview.html">Getting Started with PHP on OpenShift</a></li>
-                    <li><a href="https://developers.openshift.com">Developer Center</a></li>
-                    <li><a href="https://www.openshift.com/user-guide">User Guide</a></li>
-                    <li><a href="https://help.openshift.com">Help Center</a></li>
-                    <li><a href="http://stackoverflow.com/questions/tagged/openshift">Stack Overflow questions for OpenShift</a></li>
-                    <li><a href="http://git-scm.com/documentation">Git documentation</a></li>
-                  </ul>
+              <!-- 3d tags for circles -->
+              <div id="map"></div>
 
 
           </section>
@@ -70,9 +53,68 @@ $ git push</pre>
 
 
         <footer>
-          <div class="logo"><a href="https://www.openshift.com/"></a></div>
+          <div class="logo"><a href="https://www.twoudia.com/" target="_blank"></a></div>
         </footer>
 </section>
 
+<script type="text/javascript">
+    var width = 800, height = 600;
+    //var width = window.screen.width * 0.8 * window.devicePixelRatio, height = window.screen.height * 0.8 * window.devicePixelRatio;
+    var vis = d3.select("#map").append("svg").attr("width", width).attr("height", height);
+
+    d3.json("twMetropolitanArea2016.topo.json", function (error, data) {
+
+        var twArea = topojson.feature(data, data.objects["MACollection"]);
+        // Set the post count per Area
+        for (idx = twArea.features.length - 1; idx >= 0; idx--) {
+            twArea.features[idx].properties.postCount = 1;
+        }
+
+        // Create a unit projection and the path generator
+        var projection = d3.geo.mercator()
+            .scale(1)
+            .translate([0, 0]);
+        var path = d3.geo.path()
+            .projection(projection);
+
+        // Calcualte and resize the path to fit the screen
+        var b = path.bounds(twArea),
+            s = 0.95 / Math.max((b[1][0] - b[0][0]) / width, (b[1][1] - b[0][1]) / height),
+            t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
+        projection
+            .scale(s)
+            .translate(t);
+
+        // Draw Map with Post Counts
+        vis.selectAll("path").data(twArea.features)
+            .enter().append("path")
+            .attr("d", path)
+            .attr("id", function (d) {
+                return d.properties.County_ID;
+            })
+            .style("fill", "darkgrey")
+            .style("stroke-width", "2")
+            .style("stroke", "white")
+            .on("click", ClickonArea);
+
+        vis.selectAll("label").data(twArea.features)
+            .enter().append("text")
+            .attr("transform", function (d) {
+                return "translate(" + path.centroid(d) + ")";
+            })
+            .attr("text-anchor", "middle")
+            .attr("dy", "0.35em")
+            .attr("font-size", "2em")
+            .attr("fill", "red")
+            .text(function (d) {
+                return d.properties.postCount;
+            })
+            .on("click", ClickonArea);
+
+        function ClickonArea(data) {
+            alert('NONE!');
+        };
+    });
+</script>
 </body>
 </html>
