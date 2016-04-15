@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Mobile Price Compare</title>
-    <script src="lib/d3/d3.js" charset="utf8"></script>
+    <script src="lib/angular/angularjs.min.js" charset="utf8"></script>
+    <script src="lib/angular-bootstrap/ui-bootstrap-csp.css" charset="utf8"></script>
+    <script src="lib/d3/d3.min.js" charset="utf8"></script>
+    <script src="lib/d3-geo-projection/d3.geo.projection.min.js" charset="utf8"></script>
     <script src="lib/topojson/topojson.js" charset="utf8"></script>
     <link href="css/custom.css" rel="stylesheet" />
 </head>
@@ -45,7 +48,7 @@ $ git push</pre>
           <section class="col-xs-12 col-sm-6 col-md-6">
 
               <!-- 3d tags for circles -->
-              <div id="map"></div>
+              <div id="map" style="display: block; margin:auto;"></div>
 
 
           </section>
@@ -58,20 +61,20 @@ $ git push</pre>
 </section>
 
 <script type="text/javascript">
-    var width = 800, height = 600;
-    //var width = window.screen.width * 0.8 * window.devicePixelRatio, height = window.screen.height * 0.8 * window.devicePixelRatio;
+    //var width = 800, height = 600;
+    var width = window.screen.width * 0.8 * window.devicePixelRatio, height = 0.4 * width;
     var vis = d3.select("#map").append("svg").attr("width", width).attr("height", height);
 
-    d3.json("twMetropolitanArea2016.topo.json", function (error, data) {
+    d3.json("worldmap-area-2016.topo.json", function (error, data) {
 
-        var twArea = topojson.feature(data, data.objects["MACollection"]);
+        var twArea = topojson.feature(data, data.objects["Areas"]);
         // Set the post count per Area
         for (idx = twArea.features.length - 1; idx >= 0; idx--) {
-            twArea.features[idx].properties.postCount = 1;
+            twArea.features[idx].properties.postCount = idx;
         }
 
         // Create a unit projection and the path generator
-        var projection = d3.geo.mercator()
+        var projection = d3.geo.robinson()
             .scale(1)
             .translate([0, 0]);
         var path = d3.geo.path()
@@ -90,12 +93,20 @@ $ git push</pre>
             .enter().append("path")
             .attr("d", path)
             .attr("id", function (d) {
-                return d.properties.County_ID;
+                return d.properties.sovereignt;
             })
-            .style("fill", "darkgrey")
-            .style("stroke-width", "2")
+            //.style("fill", "darkgrey")
+            .style("stroke-width", "1")
             .style("stroke", "white")
             .on("click", ClickonArea);
+
+        var viscolour = d3.scale.linear().domain([0,500]).range(["#090","#f00"]);
+        vis.selectAll("path").data(twArea.features).attr({
+            d: path,
+            fill: function(d) {
+                return viscolour(d.properties.postCount);
+            }
+        });
 
         vis.selectAll("label").data(twArea.features)
             .enter().append("text")
