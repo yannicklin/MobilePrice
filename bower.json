@@ -16,8 +16,7 @@
     "angular-sanitize": "^1.5.3",
     "angular-ui-grid": "^3.1.1",
     "angular-filter": "^0.5.8",
-    "angular-bootstrap": "^1.3.2",
-    "gm.typeaheadDropdown": "gm.typeahead-dropdown#^1.0.5"
+    "angular-bootstrap": "^1.3.2"
   },
   "ignore": [
     "**/.*",

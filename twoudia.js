@@ -43,7 +43,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         };
 
         $scope.selContinentChanged = function () {
-            $scope.optSubRegion = $filter('filterBy')($scope.optSubRegionRAW, {CONTIENT: $scope.form.selContinent});
+            $scope.optSubRegion = $filter('filter')($scope.optSubRegionRAW, {CONTIENT: $scope.form.selContinent});
         };
 
     }])

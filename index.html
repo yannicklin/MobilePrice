@@ -15,7 +15,6 @@
     <script src="lib/angular-sanitize/angular-sanitize.min.js" charset="utf8"></script>
     <script src="lib/angular-filter/dist/angular-filter.min.js" charset="utf8"></script>
     <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf8"></script>
-    <script src="lib/gm.typeaheadDropdown/dist/gm.typeaheadDropdown.min.js" charset="utf8"></script>
     <script src="lib/angular-ui-grid/ui-grid.min.js" charset="utf8"></script>
     <script src="lib/d3/d3.min.js" charset="utf8"></script>
     <script src="lib/d3-geo-projection/d3.geo.projection.min.js" charset="utf8"></script>
@@ -38,12 +37,8 @@
         <h1>Welcome to your PHP application on OpenShift</h1>
     </hgroup>
     <hr/>
-    <select name="selContitent" id="selContitent" ng-model="form.selContinent" ng-change="selContinentChanged()">
-        <option ng-repeat="option in optContinent" value="{{option.CONTIENT}}">{{option.CONTIENT}}</option>
-    </select>
-    <select name="selSubRegion" id="selSubRegion" ng-model="form.selSubRegion" ng-show="form.selContinent">
-        <option ng-repeat="option in optSubRegion" value="{{option.SUBREGION}}">{{option.SUBREGION}}</option>
-    </select>
+    <select name="selContitent" id="selContitent" ng-model="form.selContinent" ng-change="selContinentChanged()" ng-options="option.CONTIENT as option.CONTIENT for option in optContinent"></select>
+    <select name="selSubRegion" id="selSubRegion" ng-model="form.selSubRegion" ng-show="form.selContinent" ng-options="option.SUBREGION as option.SUBREGION for option in optSubRegion"></select>
     <h4>Popup</h4>
     <div class="row">
         <div class="col-md-3">
