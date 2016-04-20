@@ -162,7 +162,7 @@ html {
     height: 100%;
 }
 
-div.tooltip {
+.tooltip {
     position: absolute;
     text-align: center;
     width: 60px;
@@ -175,8 +175,19 @@ div.tooltip {
     pointer-events: none;
 }
 
-div.map{
+.map{
     dipslay: block;
     margin: auto;
     width: 60vw;
+}
+
+.ui-grid-container {
+    dipslay: block;
+    margin: auto;
+    width: 60vw;
+    min-height: 250px;
+}
+
+.right{
+    text-align: right;
 }

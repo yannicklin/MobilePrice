@@ -34,32 +34,63 @@
 <body ng-controller="TWCtrl">
 <section class='container'>
     <hgroup>
-        <h1>Welcome to your PHP application on OpenShift</h1>
+        <h1>Welcome to Mobile Price Global Comparison Web APP</h1>
     </hgroup>
-    <hr/>
-    <select name="selContitent" id="selContitent" ng-model="form.selContinent" ng-change="selContinentChanged()" ng-options="option.CONTIENT as option.CONTIENT for option in optContinent"></select>
-    <select name="selSubRegion" id="selSubRegion" ng-model="form.selSubRegion" ng-show="form.selContinent" ng-options="option.SUBREGION as option.SUBREGION for option in optSubRegion"></select>
-    <h4>Popup</h4>
     <div class="row">
-        <div class="col-md-3">
-            <p class="input-group">
-                <input type="text" class="form-control" uib-datepicker-popup="yyyy/MM/dd" ng-model="form.inputDate" is-open="inputDatePopup.opened" datepicker-options="inputDateOpt" ng-required="true" close-text="Close" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="inputDateClick()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>
-            </p>
-
+        <div class="col-md-4">
+            <label for="selProductBrand">Brand</label>
+            <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand"
+                    ng-change="selProductBrandChanged()"
+                    ng-options="option.brand as option.brand for option in optProductBrand"></select>
         </div>
-
-
+        <div class="col-md-4">
+            <label for="selProductModel">Model</label>
+            <select class="form-control" name="selProductModel" id="selProductModel" ng-model="form.selProductModel"
+                    ng-change="selProductModelChanged()" ng-show="form.selProductBrand"
+                    ng-options="option.model as option.model for option in optProductModel"></select>
+        </div>
+        <div class="col-md-4">
+            <label for="selProductSPEC">SPEC</label>
+            <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC"
+                    ng-change="selProductSPECChanged()" ng-show="form.selProductModel"
+                    ng-options="option.spec as option.spec for option in optProductSPEC"></select>
+        </div>
     </div>
-    <hr/>
-    <uib-tabset active="activeJustified" justified="true" ng-show="form.selSubRegion">
-        <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
-            <div ng-include="tab.template"></div>
-        </uib-tab>
-    </uib-tabset>
 
+    <div class="row">
+        <div class="col-md-4">
+            <label for="selCurrency">Currency</label>
+            <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency"
+                    ng-change="selCurrencyChanged()"
+                    ng-options="option.currency as option.currency for option in optCurrency"></select>
+        </div>
+        <div class="col-md-4">
+            <label for="comDate">Exchange Date</label>
+            <div class="input-group" id="comDate" name="comDate">
+                <input type="text" class="form-control" name="inpEXDate" id="inpEXDate" uib-datepicker-popup="yyyy-MM-dd" ng-model="form.inpEXDate"
+                       is-open="inpEXDatePopup.opened" datepicker-options="inpEXDateOpt" ng-required="true"
+                       close-text="Close" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="inpEXDateClick()"><i
+                    class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="btnPriceQuery"></label>
+            <button class="btn btn-default form-control" name="btnPriceQuery" id="btnPriceQuery" ng-show="form.selProductSPEC"
+                    ng-click="priceEnquiry()">Query</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row" ng-show="GridData">
+        <uib-tabset active="activeJustified" justified="true">
+            <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+                <div ng-include="tab.template"></div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <hr ng-show="GridData" />
     <footer>
         <div class="logo"><a href="https://www.twoudia.com/" target="_blank"></a></div>
     </footer>
