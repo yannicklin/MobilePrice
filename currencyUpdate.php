@@ -9,7 +9,7 @@ $sqlDB = new PDO($sqliteFile) or die("cannot open database");
 
 // Abandon the use of "INSERT OR REPLACE" for the id would be increased plenty for the UPDATE actions
 //$strSQL = "INSERT OR REPLACE INTO exchangerate(currency, rate, recdate) VALUES(:currency, :rate, :recdate);";
-$objUpdateQuery = $sqlDB->prepare("UPDATE exchangerate SET rate=:rate WHERE currency=:currency and recdate=:recdate;");
+$objUpdateQuery = $sqlDB->prepare("UPDATE exchangerate SET rate=:rate WHERE currency=:currency and date(recdate)=date(:recdate);");
 $objInsertQuery = $sqlDB->prepare("INSERT OR IGNORE INTO exchangerate(currency, rate, recdate) VALUES(:currency, :rate, :recdate);");
 
 if (!empty($_GET["date"])) {

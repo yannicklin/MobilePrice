@@ -15,11 +15,11 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 for (idx = twArea.features.length - 1; idx >= 0; idx--) {
                     var countryData = $filter('filter')(datReference, {country_iso: twArea.features[idx].properties.iso_a3}, true);
                     if (countryData.length == 0) {
-                        twArea.features[idx].properties.convertprice = 0;
+                        twArea.features[idx].properties.baseprice_date = 0;
                     } else {
-                        twArea.features[idx].properties.convertprice = Math.round(countryData[0].convertprice);
-                        if (countryData[0].convertprice < pricerangeMIN) pricerangeMIN = countryData[0].convertprice;
-                        if (countryData[0].convertprice > pricerangeMAX) pricerangeMAX = countryData[0].convertprice;
+                        twArea.features[idx].properties.baseprice_date = Math.round(countryData[0].baseprice_date);
+                        if (countryData[0].baseprice_date < pricerangeMIN) pricerangeMIN = countryData[0].baseprice_date;
+                        if (countryData[0].baseprice_date > pricerangeMAX) pricerangeMAX = countryData[0].baseprice_date;
                     }
                 }
 
@@ -49,7 +49,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                         tip.transition()
                             .duration(200)
                             .style("opacity", .9);
-                        tip.html(d.properties.name + '<br />' + ' $$' + d.properties.convertprice)
+                        tip.html(d.properties.name + '<br />' + ' $$' + d.properties.baseprice_date)
                             .style("left", (d3.event.pageX) + "px")
                             .style("top", (d3.event.pageY - 28) + "px");
                     })
@@ -59,15 +59,16 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                             .style("opacity", 0);
                     });
 
-                var viscolour = d3.scale.linear().domain([pricerangeMIN, pricerangeMAX]).range(["#FFD700", "#B8860B"]);
+                // Set Colours for countries with available price, from Yellow (cheap) to Chocolate (expensive)
+                var viscolour = d3.scale.linear().domain([pricerangeMIN, pricerangeMAX]).range(["#FFFFCC", "#E8A317"]);
                 vis.selectAll("path").data(twArea.features).attr({
                     d: path,
                     fill: function (d) {
 
-                        if (d.properties.convertprice == 0) {
+                        if (d.properties.baseprice_date == 0) {
                             return "#708090";
                         } else {
-                            return viscolour(d.properties.convertprice);
+                            return viscolour(d.properties.baseprice_date);
                         }
                     }
                 });
@@ -106,7 +107,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         // for Product - Brand
         $scope.selProductBrandChanged = function () {
             $scope.optProductModel = $filter('filter')($scope.optProductModelRAW, {brand: $scope.form.selProductBrand}, true);
-            $scope.GridData = "";
+            $scope.form.selProductModel = "";
         }
         // for Product - Model
         $scope.selProductModelChanged = function () {
@@ -114,15 +115,17 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 brand: $scope.form.selProductBrand,
                 model: $scope.form.selProductModel
             }, true);
-            $scope.GridData = "";
+            $scope.form.selProductSPEC = "";
+
         };
         // for Product - SPEC
         $scope.selProductSPECChanged = function () {
-            $scope.GridData = "";
         };
         // for Exchange Rate Date
         $scope.form.inpEXDate = new Date();
-        $scope.inpEXDatePopup.opened = false;
+        $scope.inpEXDatePopup = {
+            opened: false
+        };
         $scope.inpEXDateOpt = {
             format: 'yyyy-MM-dd',
             maxDate: new Date(),
@@ -138,14 +141,29 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         $scope.selCurrencyChanged = function () {
             if ($scope.GridData) $scope.priceEnquiry();
         };
+        // Query available only all conditions are set
+        $scope.$watchCollection('form', function() {
+            $scope.GridData = "";
+            var blnCompleted = true;
+            if (!$scope.form.selProductBrand) blnCompleted = false;
+            if (!$scope.form.selProductModel) blnCompleted = false;
+            if (!$scope.form.selProductSPEC) blnCompleted = false;
+            if (!$scope.form.selProductBrand) blnCompleted = false;
+            if (!$scope.form.inpEXDate) blnCompleted = false;
+            $scope.condsCompleted = blnCompleted;
+        });
 
         // Get Price according to user defined conditions
         $scope.priceEnquiry = function () {
+            if (!$scope.condsCompleted) return;
             $scope.GridData = "";
-            $http.get('recordFetch.php?table=v_price&cond=y&brand=' + $scope.form.selProductBrand + '&model=' + $scope.form.selProductModel + '&spec=' + $scope.form.selProductSPEC + '&convertcurrency=' + $scope.form.selCurrency + '&ratedate=' + $filter('date')($scope.form.inpEXDate, 'yyyy-MM-dd')).success(function (data) {
+            $http.get('recordFetch.php?table=v_pricesummary&cond=y&brand=' + $scope.form.selProductBrand + '&model=' + $scope.form.selProductModel + '&spec=' + $scope.form.selProductSPEC + '&basecurrency=' + $scope.form.selCurrency + '&ratedate=' + $filter('date')($scope.form.inpEXDate, 'yyyy-MM-dd')).success(function (data) {
                 $scope.GridData = data;
             });
         };
+
+        // Copyright Years Presented in Footer
+        $scope.copyrightsyear = (new Date().getFullYear() > 2016) ? '2016 - ' + (new Date().getFullYear()) : '2016';
     }])
 
     .controller("GlobeCtrl", ["$scope", "$log", function ($scope, $log) {
@@ -165,12 +183,12 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'continent', displayName: 'Continent'},
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
-                {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'}
+                {name: 'price', displayName: 'Origin', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'}
             ]
         };
 
-        $scope.$watchCollection('GridData', function () {
+        $scope.$watchCollection("GridData", function () {
             $scope.twGrid.data = $scope.GridData;
             $scope.drawMAPD3(width, height, "geo/worldmap-2016.topo.json", $scope.twGrid.data, vis, tip);
         });
@@ -194,9 +212,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
@@ -223,9 +242,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
@@ -252,9 +272,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
@@ -281,9 +302,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
@@ -310,9 +332,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
@@ -339,9 +362,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 {name: 'country', displayName: 'Country', cellTooltip: true, width: '30%'},
                 {name: 'currency', displayName: 'Currency'},
                 {name: 'price', displayName: 'Origin', cellFilter: 'priceFilter', cellClass: 'right'},
-                {name: 'convertprice', displayName: 'Conversion', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_date', displayName: 'Conversion', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
+                {name: 'baseprice_30days', displayName: '30 Days Average', type: 'number', cellFilter: 'priceFilter', cellClass: 'right'},
                 {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'recdate', displayName: 'Last Updated'}
+                {name: 'updatedate', displayName: 'Last Updated'}
             ]
         };
 
