@@ -4,7 +4,7 @@
  * User: Yannick Lin
  * Date: 2016/4/17
  */
-$sqliteFile = 'sqlite:twoudia.db';
+$sqliteFile = "sqlite:/var/lib/openshift/570ce99f2d52719720000015/app-root/repo/twoudia.db";
 $sqlDB = new PDO($sqliteFile) or die("cannot open database");
 
 // Abandon the use of "INSERT OR REPLACE" for the id would be increased plenty for the UPDATE actions

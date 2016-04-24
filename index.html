@@ -46,22 +46,22 @@
     <div class="row">
         <div class="col-md-4">
             <label for="selProductBrand">Brand</label>
-            <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand" ng-change="selProductBrandChanged()" ng-options="option.brand as option.brand for option in optProductBrand"></select>
+            <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand" ng-change="selProductBrandChanged()" ng-options="option.brand as option.brand for option in optProductBrand | orderBy:'brand'"></select>
         </div>
         <div class="col-md-4">
             <label for="selProductModel">Model</label>
-            <select class="form-control" name="selProductModel" id="selProductModel" ng-model="form.selProductModel" ng-change="selProductModelChanged()" ng-show="form.selProductBrand" ng-options="option.model as option.model for option in optProductModel"></select>
+            <select class="form-control" name="selProductModel" id="selProductModel" ng-model="form.selProductModel" ng-change="selProductModelChanged()" ng-show="form.selProductBrand" ng-options="option.model as option.model for option in optProductModel | orderBy:'model'"></select>
         </div>
         <div class="col-md-4">
             <label for="selProductSPEC">SPEC</label>
-            <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC" ng-change="selProductSPECChanged()" ng-show="form.selProductModel" ng-options="option.spec as option.spec for option in optProductSPEC"></select>
+            <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC" ng-change="selProductSPECChanged()" ng-show="form.selProductModel" ng-options="option.spec as option.spec for option in optProductSPEC | orderBy:'spec'"></select>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-4">
             <label for="selCurrency">Currency</label>
-            <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency" ng-change="selCurrencyChanged()" ng-options="option.currency as option.currency for option in optCurrency"></select>
+            <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency" ng-change="selCurrencyChanged()" ng-options="option.currency as option.currency for option in optCurrency | orderBy:'currency'"></select>
         </div>
         <div class="col-md-4">
             <label for="comDate">Exchange Date</label>

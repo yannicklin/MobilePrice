@@ -122,7 +122,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         $scope.selProductSPECChanged = function () {
         };
         // for Exchange Rate Date
-        $scope.form.inpEXDate = new Date();
+        $scope.form.inpEXDate = new Date(new Date().setDate(new Date().getDate() - 1));
         $scope.inpEXDatePopup = {
             opened: false
         };
