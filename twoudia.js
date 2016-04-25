@@ -18,9 +18,13 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                         twArea.features[idx].properties.baseprice_date = 0;
                     } else {
                         twArea.features[idx].properties.baseprice_date = Math.round(countryData[0].baseprice_date);
+                        twArea.features[idx].properties.price = countryData[0].price;
+                        twArea.features[idx].properties.currency = countryData[0].currency;
+                        twArea.features[idx].properties.basecurrency = countryData[0].basecurrency;
                         if (countryData[0].baseprice_date < pricerangeMIN) pricerangeMIN = countryData[0].baseprice_date;
                         if (countryData[0].baseprice_date > pricerangeMAX) pricerangeMAX = countryData[0].baseprice_date;
                     }
+
                 }
 
                 // Create a unit projection and the path generator
@@ -33,7 +37,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                     t = [(width - s * (b[1][0] + b[0][0])) / 2, (height - s * (b[1][1] + b[0][1])) / 2];
                 projection.scale(s).translate(t);
 
-                // Draw Map with Post Counts
+                // Draw Map with Converted Price
                 vis.selectAll("path").data(twArea.features)
                     .enter().append("path")
                     .attr("d", path)
@@ -43,7 +47,9 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                     .style("stroke-width", "1")
                     .style("stroke", "white")
                     .on("click", function (d) {
-                        alert('name: ' + d.properties.name + ' \n continent: ' + d.properties.continent + ' \n ISO: ' + d.properties.iso_a3);
+                        if (d.properties.baseprice_date > 0) {
+                            alert(d.properties.name + '\nOriginal: ' + d.properties.currency + ' ' + d.properties.price + '\nConverted: ' + d.properties.basecurrency + ' ' + d.properties.baseprice_date);
+                        }
                     })
                     .on("mouseover", function (d) {
                         tip.transition()
