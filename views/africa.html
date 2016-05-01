@@ -1,4 +1,5 @@
 <section ng-controller="AfricaCtrl">
     <div id="africamap" class="map"></div>
-    <div ui-grid="twGrid" ui-grid-pagination ui-grid-auto-resize class="ui-grid-container"></div>
+    <div ui-grid="twGrid" ui-grid-pagination ui-grid-auto-resize class="ui-grid-container" ng-show="twGrid.data.length"></div>
+    <h3 ng-hide="twGrid.data.length"> Sorry! No record found ! </h3>
 </section>
