@@ -573,7 +573,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
 
         $scope.$watchCollection('GridData', function () {
             $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'South America'}, true);
-
+            $scope.drawMAPD3(width, height, "geo/southamerica-2016.topo.json", $scope.twGrid.data, vis, tip);
         });
 
         angular.element($window).bind('orientationchange', function () {
