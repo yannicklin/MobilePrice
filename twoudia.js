@@ -167,7 +167,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         $scope.priceEnquiry = function () {
             if (!$scope.condsCompleted) return;
             $scope.GridData = "";
-            $http.get('recordFetch.php?table=v_pricesummary&cond=y&brand=' + $scope.form.selProductBrand + '&model=' + $scope.form.selProductModel + '&spec=' + $scope.form.selProductSPEC + '&basecurrency=' + $scope.form.selCurrency + '&ratedate=' + $filter('date')($scope.form.inpEXDate, 'yyyy-MM-dd')).success(function (data) {
+            $http.get('recordFetch.php?table=v_pricesummary&cond=y&brand=' + encodeURIComponent($scope.form.selProductBrand) + '&model=' + encodeURIComponent($scope.form.selProductModel) + '&spec=' + encodeURIComponent($scope.form.selProductSPEC) + '&basecurrency=' + encodeURIComponent($scope.form.selCurrency) + '&ratedate=' + encodeURIComponent($filter('date')($scope.form.inpEXDate, 'yyyy-MM-dd'))).success(function (data) {
                 $scope.GridData = data;
             });
         };
