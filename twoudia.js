@@ -105,6 +105,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
             $scope.optProductBrand = $filter('unique')(data, 'brand');
             $scope.optProductModelRAW = $filter('unique')(data, 'con_B_M');
             $scope.optProductSPECRAW = data;
+
+            // Set default initial value for Product Brand
+            $scope.form.selProductBrand = $scope.optProductModelRAW[0].brand;
+            $scope.selProductBrandChanged();
         });
 
         // Get Currency Settings as Option List
@@ -116,8 +120,9 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         // for Product - Brand
         $scope.selProductBrandChanged = function () {
             $scope.optProductModel = $filter('filter')($scope.optProductModelRAW, {brand: $scope.form.selProductBrand}, true);
-            $scope.form.selProductModel = "";
-            $scope.form.selProductSPEC = "";
+            // Set default initial value for Product Model
+            $scope.form.selProductModel = $scope.optProductModel[0].model;
+            $scope.selProductModelChanged();
         }
         // for Product - Model
         $scope.selProductModelChanged = function () {
@@ -125,7 +130,8 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 brand: $scope.form.selProductBrand,
                 model: $scope.form.selProductModel
             }, true);
-            $scope.form.selProductSPEC = "";
+            // Set default initial value for Product SPEC
+            $scope.form.selProductSPEC = $scope.optProductSPEC[0].spec;
 
         };
         // for Product - SPEC
