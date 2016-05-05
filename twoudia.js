@@ -92,8 +92,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
             });
         };
     }])
+
     .config([function () {
     }])
+
     .controller("TWCtrl", ["$scope", "$log", "$filter", "$http", function ($scope, $log, $filter, $http) {
         $scope.form = {};
 
@@ -220,8 +222,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("AsiaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.7 * width;
         var width = parseInt(d3.select('#asiamap').style('width'), 10) * 0.9, height = 0.7 * width;
         var vis = d3.select("#asiamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#asiamap").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -250,8 +250,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("EuropeCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.3 * width;
         var width = parseInt(d3.select('#europemap').style('width'), 10) * 0.9, height = 0.3 * width;
         var vis = d3.select("#europemap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#europemap").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -280,8 +278,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("AfricaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 1 * width;
         var width = parseInt(d3.select('#africamap').style('width'), 10) * 0.6, height = 1 * width;
         var vis = d3.select("#africamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#africamap").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -310,8 +306,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("OceaniaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.8 * width;
         var width = parseInt(d3.select('#oceaniamap').style('width'), 10) * 0.7, height = 0.8 * width;
         var vis = d3.select("#oceaniamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#oceaniamap").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -340,8 +334,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("NorthAmericaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.6 * width;
         var width = parseInt(d3.select('#northamericamap').style('width'), 10) * 0.9, height = 0.6 * width;
         var vis = d3.select("#northamericamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#northamericamap").append("div").attr("class", "tooltip").style("opacity", 0);
@@ -370,8 +362,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
     }])
 
     .controller("SouthAmericaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 1.5 * width;
         var width = parseInt(d3.select('#southamericamap').style('width'), 10) * 0.5, height = 1.5 * width;
         var vis = d3.select("#southamericamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#southamericamap").append("div").attr("class", "tooltip").style("opacity", 0);
