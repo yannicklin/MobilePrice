@@ -109,7 +109,7 @@ table {
     align-items: stretch;
     margin: 0 auto;
     width: 100vw;
-    min-height: 380px;
+    min-height: 300px;
     font-size: 6px;
 }
 table * {
@@ -150,10 +150,14 @@ tfoot td {
 .table-hover tbody tr:hover td {
     background: #b4dcff;
 }
-.st-sort-ascent:before{
+.st-sortable:not(.st-sort-ascent):not(.st-sort-descent):after {
+    content: '\25B2\25BC';
+    opacity: 0.3;
+}
+.st-sort-ascent:after{
     content: '\25B2';
 }
-.st-sort-descent:before{
+.st-sort-descent:after{
     content: '\25BC';
 }
 
