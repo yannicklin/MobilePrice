@@ -77,13 +77,26 @@ form {
     position: absolute;
     text-align: center;
     width: 10rem;
-    height: 2.5rem;
+    height: 1.5rem;
     padding: 2px;
     background: lightsteelblue;
     border: 0px;
     border-radius: 5px;
     pointer-events: none;
     line-height: 1rem;
+}
+.map .popover {
+    display: block;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+    height: 60px;
+    padding: 2px;
+    background: lightgreen;
+    border: 2px;
+    border-radius: 10px;
+    pointer-events: none;
+    line-height: 1.2rem;
 }
 
 
@@ -107,6 +120,7 @@ thead {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    background: #d2d2d2;
 }
 tbody {
     /*overflow-y: scroll;*/
@@ -132,6 +146,9 @@ tfoot {
 tfoot td {
     width: 100%;
     display: inline-block;
+}
+.table-hover tbody tr:hover td {
+    background: #b4dcff;
 }
 .st-sort-ascent:before{
     content: '\25B2';
