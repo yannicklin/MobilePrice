@@ -1,5 +1,32 @@
 <section ng-controller="GlobeCtrl">
     <div id="globemap" class="map"></div>
-    <div ui-grid="twGrid" ui-grid-pagination ui-grid-auto-resize class="ui-grid-container" ng-show="twGrid.data.length"></div>
-    <h3 ng-hide="twGrid.data.length"> Sorry! No record found ! </h3>
+
+    <table st-table="rowCollection" st-safe-src="twGrid" class="table table-striped table-hover" ng-show="twGrid.length">
+        <thead>
+        <tr>
+            <th st-ratio="20" st-sort="continent">Continent</th>
+            <th st-ratio="30" st-sort="country">Country</th>
+            <th st-ratio="10">Currency</th>
+            <th class="right" st-ratio="20" st-sort="price" st-skip-natural="true">Origin</th>
+            <th class="right" st-ratio="20" st-sort="baseprice_date" st-skip-natural="true" st-sort-default="true">Conversion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in rowCollection">
+            <td st-ratio="20">{{row.continent}}</td>
+            <td st-ratio="30">{{row.country}}</td>
+            <td st-ratio="10">{{row.currency}}</td>
+            <td class="right" st-ratio="20">{{row.price | currency}}</td>
+            <td class="right" st-ratio="20">{{row.baseprice_date | currency}}</td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="5" class="text-center" st-pagination="" st-items-by-page="5" st-displayed-pages="3" st-template="views/custom-foot-paginationcontrol.html">
+            </td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <h3 ng-hide="twGrid.length"> Sorry! No record found ! </h3>
 </section>

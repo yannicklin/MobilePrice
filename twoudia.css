@@ -87,12 +87,57 @@ form {
 }
 
 
-/* GRID */
-.ui-grid-container {
-    dipslay: block;
-    margin: auto;
+/* GRID/TABLE */
+table {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 auto;
     width: 100vw;
     min-height: 380px;
+    font-size: 6px;
+}
+table * {
+    box-sizing: inherit;
+    -moz-box-sizing: inherit;
+}
+thead {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+tbody {
+    /*overflow-y: scroll;*/
+    display: inline-block;
+}
+thead > tr, tbody > tr, tfoot > tr {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+thead, tfoot {
+    flex-shrink: 0;
+}
+th, tbody td {
+    width: 20%; /* this can vary */
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+tfoot {
+    display: inline-block;
+}
+tfoot td {
+    width: 100%;
+    display: inline-block;
+}
+.st-sort-ascent:before{
+    content: '\25B2';
+}
+.st-sort-descent:before{
+    content: '\25BC';
 }
 
 
@@ -133,9 +178,10 @@ footer .openshift-logo {
     .map .tooltip {
         font-size: 9px;
     }
-    .ui-grid-container {
+    .table {
         width: 90vw;
         min-height: 380px;
+        font-size: 9px;
     }
 }
 
@@ -154,9 +200,10 @@ footer .openshift-logo {
     .map .tooltip {
         font-size: 10px;
     }
-    .ui-grid-container {
+    .table {
         width: 75vw;
         min-height: 380px;
+        font-size: 10px;
     }
 }
 
@@ -175,9 +222,10 @@ footer .openshift-logo {
     .map .tooltip {
         font-size: 12px;
     }
-    .ui-grid-container {
+    .table {
         width: 60vw;
         min-height: 380px;
+        font-size: 12px;
     }
     .form-inline .input-group>.form-control {
         max-width: 10em;
