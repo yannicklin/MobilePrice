@@ -17,7 +17,7 @@
     <script src="lib/angular-sanitize/angular-sanitize.min.js" charset="utf8"></script>
     <script src="lib/angular-filter/dist/angular-filter.min.js" charset="utf8"></script>
     <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js" charset="utf8"></script>
-    <script src="lib/angular-ui-grid/ui-grid.min.js" charset="utf8"></script>
+    <script src="lib/angular-smart-table/dist/smart-table.min.js" charset="utf8"></script>
     <script src="lib/d3/d3.min.js" charset="utf8"></script>
     <script src="lib/d3-geo-projection/d3.geo.projection.min.js" charset="utf8"></script>
     <script src="lib/topojson/topojson.js" charset="utf8"></script>
@@ -28,7 +28,6 @@
     <!-- Library CSSs -->
     <link href="bootstrap.min.css" rel="stylesheet"/>
     <link href="lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet"/>
-    <link href="lib/angular-ui-grid/ui-grid.min.css" rel="stylesheet"/>
 
     <!-- Website CSSs -->
     <link href="twoudia.css" rel="stylesheet"/>
@@ -56,10 +55,11 @@
     <h1>Welcome to Mobile Price Global Comparison Web APP</h1>
 
     <div class="row">
-        <p class="col-lg-12">
+        <p class="col-lg-12 margin-less">
             All price information is retrieved from official online stores and local retailers of the listed mobile phone brands. Currency conversion is calculated only as reference and prices may vary. There is no guarantee on the accuracy or availability on the price of the listed mobile phones.
         </p>
     </div>
+
     <div class="row">
         <form class="form-inline" role="form">
             <label for="selProductBrand">Brand</label>
@@ -76,7 +76,6 @@
             <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC"
                     ng-change="selProductSPECChanged()" ng-disabled="! form.selProductModel"
                     ng-options="option.spec as option.spec for option in optProductSPEC | orderBy:'spec'"></select>
-
 
             <label for="selCurrency">Currency</label>
             <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency"
@@ -111,18 +110,30 @@
             </uib-tab>
         </uib-tabset>
     </div>
-    <hr ng-show="GridData"/>
+
     <footer>
         <div class="row">
+            <div class="col-sm-3 logo apple-logo"><a href="http://www.apple.com/" target="apple"></a></div>
+            <div class="col-sm-3 logo sony-logo"><a href="http://www.sonymobile.com/us/" target="sony"></a></div>
+            <div class="col-sm-3 logo htc-logo"><a href="http://www.htc.com/us/" target="htc"></a></div>
+            <div class="col-sm-3 logo microsoft-logo"><a href="https://www.microsoft.com/en/mobile/phones/lumia/" target="microsoft"></a></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3 logo samsung-logo"><a href="http://www.samsung.com/us/" target="samsung"></a></div>
+            <div class="col-sm-3 logo lg-logo"><a href="http://www.lg.com/us" target="lg"></a></div>
+            <div class="col-sm-3 logo motorola-logo"><a href="http://www.motorola.com/us/home" target="motorola"></a></div>
+            <div class="col-sm-3 logo oppo-logo"><a href="http://www.mi.com/en/" target="xioami"></a></div>
+        </div>
+        <div class="row">
             <div class="col-sm-1"></div>
-            <div class="col-sm-4 logo twoudia-logo"><a href="https://www.twoudia.com/" target="_blank"></a></div>
-            <div class="col-sm-3 logo openexchangerates-logo"><a href="https://openexchangerates.org/" target="_blank"></a></div>
-            <div class="col-sm-3 logo openshift-logo"><a href="https://www.openshift.com/" target="_blank"></a></div>
+            <div class="col-sm-4 logo twoudia-logo"><a href="https://www.twoudia.com/" target="twoudia"></a></div>
+            <div class="col-sm-3 logo openexchangerates-logo"><a href="https://openexchangerates.org/" target="openexchangerates"></a></div>
+            <div class="col-sm-3 logo openshift-logo"><a href="https://www.openshift.com/" target="openshift"></a></div>
             <div class="col-sm-1"></div>
         </div>
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-8">WEB Service: <a href="https://www.twoudia.com/" target="_self">Mobile Price Compare</a> is proudly created by <a href="https://www.twoudia.com/" target="_blank">TWOUDIA</a> @ {{ copyrightsyear }}. All rights are reserved.
+            <div class="col-sm-8">WEB Service: <a href="http://mobileprice.twoudia.work/" target="_self">Mobile Price Compare</a> is proudly created by <a href="https://www.twoudia.com/" target="twoudia">TWOUDIA</a> @ {{ copyrightsyear }}. All rights are reserved.
             </div>
             <div class="col-sm-2"></div>
         </div>

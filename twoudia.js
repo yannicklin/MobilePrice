@@ -1,13 +1,12 @@
 /**
  * Created by Yannick on 2016/4/16.
  */
-angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.grid", "ui.grid.pagination", "ui.grid.autoResize", "angular.filter"])
+angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smart-table", "angular.filter"])
     .run(["$rootScope", "$log", "$filter", function ($rootScope, $log, $filter) {
         $rootScope.GridData = "";
 
-        $rootScope.drawMAPD3 = function (width, height, jsonpath, datReference, vis, tip) {
+        $rootScope.drawMAPD3 = function (width, height, jsonpath, datReference, vis, tip, popover) {
             d3.json(jsonpath, function (error, data) {
-
                 var twArea = topojson.feature(data, data.objects["Areas"]);
 
                 // Get Price (converted with exchange rate per country, and also build up the range
@@ -47,23 +46,32 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                     .style("stroke", "white")
                     .on("click", function (d) {
                         if (d.properties.baseprice_date > 0) {
-                            alert(d.properties.name + '\nOriginal: ' + d.properties.currency + ' ' + d.properties.price + '\nConverted: ' + d.properties.basecurrency + ' ' + d.properties.baseprice_date);
+                            popover.html(d.properties.name + '<br /><br />Original: ' + d.properties.currency + ' ' + d.properties.price + '<br />Converted: ' + d.properties.basecurrency + ' ' + d.properties.baseprice_date)
+                                .style("left", parseInt(vis.node().getBoundingClientRect().left + window.pageXOffset +  width /2 - 100)  + "px")
+                                .style("top", parseInt(vis.node().getBoundingClientRect().top + window.pageYOffset + height /2 - 30)  + "px");
+                            popover.transition()
+                                .duration(500)
+                                .style("opacity", .9)
+                                .transition()
+                                .duration(500)
+                                .style("opacity", 0)
+                                .delay(4000);
                         }
                     })
                     .on("mouseover", function (d) {
                         if (d.properties.baseprice_date > 0) {
+                            tip.html(d.properties.name)
+                                .style("left", (d3.event.pageX) + "px")
+                                .style("top", (d3.event.pageY - 28) + "px");
                             tip.transition()
                                 .duration(200)
                                 .style("opacity", .9);
-                            tip.html(d.properties.name + '<br />' + d.properties.currency + ' ' + d.properties.price)
-                                .style("left", (d3.event.pageX) + "px")
-                                .style("top", (d3.event.pageY - 28) + "px");
                         }
                     })
                     .on("mouseout", function (d) {
                         if (d.properties.baseprice_date > 0) {
                             tip.transition()
-                                .duration(500)
+                                .duration(200)
                                 .style("opacity", 0);
                         }
                     });
@@ -84,8 +92,10 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
             });
         };
     }])
+
     .config([function () {
     }])
+
     .controller("TWCtrl", ["$scope", "$log", "$filter", "$http", function ($scope, $log, $filter, $http) {
         $scope.form = {};
 
@@ -120,6 +130,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         // for Product - Brand
         $scope.selProductBrandChanged = function () {
             $scope.optProductModel = $filter('filter')($scope.optProductModelRAW, {brand: $scope.form.selProductBrand}, true);
+
             // Set default initial value for Product Model
             $scope.form.selProductModel = $scope.optProductModel[0].model;
             $scope.selProductModelChanged();
@@ -130,9 +141,9 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
                 brand: $scope.form.selProductBrand,
                 model: $scope.form.selProductModel
             }, true);
+
             // Set default initial value for Product SPEC
             $scope.form.selProductSPEC = $scope.optProductSPEC[0].spec;
-
         };
         // for Product - SPEC
         $scope.selProductSPECChanged = function () {
@@ -144,8 +155,8 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         };
         $scope.inpEXDateOpt = {
             format: 'yyyy-MM-dd',
-            maxDate: new Date(),
-            minDate: new Date(new Date().setDate(new Date().getDate() - 180)),
+            maxDate: new Date(new Date().setDate(new Date().getDate() - 1)),
+            minDate: new Date(new Date().setDate(new Date().getDate() - 90)),
             startingDay: 0,
             showWeeks: false
         };
@@ -186,46 +197,19 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         var width = parseInt(d3.select('#globemap').style('width'), 10), height = 0.5 * width;
         var vis = d3.select("#globemap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#globemap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#globemap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#globemap').style('width'), 10);
             height = 0.5 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/worldmap-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationPageSizes: [10, 25],
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'continent', displayName: 'Continent', minWidth: '100'},
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {
-                    name: 'price',
-                    displayName: 'Origin',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                }
-            ]
+            $scope.drawMAPD3(width, height, "geo/worldmap-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection("GridData", function () {
-            $scope.twGrid.data = $scope.GridData;
-            $scope.drawMAPD3(width, height, "geo/worldmap-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $scope.GridData;
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -238,53 +222,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("AsiaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.7 * width;
         var width = parseInt(d3.select('#asiamap').style('width'), 10) * 0.9, height = 0.7 * width;
         var vis = d3.select("#asiamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#asiamap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#asiamap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#asiamap').style('width'), 10) * 0.9;
             height = 0.7 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/asia-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/asia-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'Asia'}, true);
-            $scope.drawMAPD3(width, height, "geo/asia-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'Asia'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -297,53 +250,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("EuropeCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.3 * width;
         var width = parseInt(d3.select('#europemap').style('width'), 10) * 0.9, height = 0.3 * width;
         var vis = d3.select("#europemap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#europemap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#europemap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#europemap').style('width'), 10) * 0.9;
             height = 0.3 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/europe-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/europe-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'Europe'}, true);
-            $scope.drawMAPD3(width, height, "geo/europe-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'Europe'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -356,53 +278,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("AfricaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 1 * width;
         var width = parseInt(d3.select('#africamap').style('width'), 10) * 0.6, height = 1 * width;
         var vis = d3.select("#africamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#africamap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#africamap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#africamap').style('width'), 10) * 0.6;
             height = 1 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/africa-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/africa-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'Africa'}, true);
-            $scope.drawMAPD3(width, height, "geo/africa-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'Africa'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -415,53 +306,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("OceaniaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.8 * width;
         var width = parseInt(d3.select('#oceaniamap').style('width'), 10) * 0.7, height = 0.8 * width;
         var vis = d3.select("#oceaniamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#oceaniamap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#oceaniamap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#oceaniamap').style('width'), 10) * 0.7;
             height = 0.8 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/oceania-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: false,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/oceania-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'Oceania'}, true);
-            $scope.drawMAPD3(width, height, "geo/oceania-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'Oceania'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -474,53 +334,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("NorthAmericaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 0.6 * width;
         var width = parseInt(d3.select('#northamericamap').style('width'), 10) * 0.9, height = 0.6 * width;
         var vis = d3.select("#northamericamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#northamericamap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#northamericamap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#northamericamap').style('width'), 10) * 0.9;
             height = 0.6 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/northamerica-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/northamerica-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'North America'}, true);
-            $scope.drawMAPD3(width, height, "geo/northamerica-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'North America'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -533,53 +362,22 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
     }])
 
     .controller("SouthAmericaCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
-        //var width = 800, height = 600;
-        //var width = window.screen.width * 0.3 * window.devicePixelRatio, height = 1.5 * width;
         var width = parseInt(d3.select('#southamericamap').style('width'), 10) * 0.5, height = 1.5 * width;
         var vis = d3.select("#southamericamap").append("svg").attr("width", width).attr("height", height);
         var tip = d3.select("#southamericamap").append("div").attr("class", "tooltip").style("opacity", 0);
+        var popover = d3.select("#southamericamap").append("div").attr("class", "popover").style("opacity", 0);
 
         function D3reDraw() {
             width = parseInt(d3.select('#southamericamap').style('width'), 10) * 0.5;
             height = 1.5 * width;
             vis.attr("width", width).attr("height", height);
-            $scope.drawMAPD3(width, height, "geo/southamerica-2016.topo.json", $scope.twGrid.data, vis, tip);
-        }
-
-        // Setup the DataGrid
-        $scope.twGrid = {
-            enablePaginationControls: true,
-            paginationTemplate: 'views/ui-grid-pagination-no-pagesoption.html',
-            paginationPageSize: 10,
-            enableColumnMenus: false,
-            columnDefs: [
-                {name: 'country', displayName: 'Country', minWidth: '100', cellTooltip: true, width: '20%'},
-                {name: 'currency', displayName: 'Currency', minWidth: '50'},
-                {name: 'price', displayName: 'Origin', minWidth: '100', cellFilter: 'priceFilter', cellClass: 'right'},
-                {
-                    name: 'baseprice_date',
-                    displayName: 'Conversion',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {
-                    name: 'baseprice_30days',
-                    displayName: '30 Days Average',
-                    type: 'number',
-                    minWidth: '100',
-                    cellFilter: 'priceFilter',
-                    cellClass: 'right'
-                },
-                {name: 'memo', displayName: 'Memo', enableSorting: false},
-                {name: 'updatedate', displayName: 'Last Updated'}
-            ]
+            $scope.drawMAPD3(width, height, "geo/southamerica-2016.topo.json", $scope.twGrid, vis, tip, popover);
         };
 
+        // Setup the DataGrid
         $scope.$watchCollection('GridData', function () {
-            $scope.twGrid.data = $filter('filter')($scope.GridData, {continent: 'South America'}, true);
-            $scope.drawMAPD3(width, height, "geo/southamerica-2016.topo.json", $scope.twGrid.data, vis, tip);
+            $scope.twGrid = $filter('filter')($scope.GridData, {continent: 'South America'}, true);
+            D3reDraw();
         });
 
         angular.element($window).bind('orientationchange', function () {
@@ -591,9 +389,12 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "ui.g
         });
     }])
 
-    .filter('priceFilter', function () {
-        return function (value) {
-            return '$' + parseFloat(value).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+    .directive('stRatio',function(){
+        return {
+            link:function(scope, element, attr){
+                var ratio=+(attr.stRatio);
+                element.css('width',ratio+'%');
+            }
         };
     })
 ;
