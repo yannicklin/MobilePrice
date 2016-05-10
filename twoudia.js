@@ -156,7 +156,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
         $scope.inpEXDateOpt = {
             format: 'yyyy-MM-dd',
             maxDate: new Date(new Date().setDate(new Date().getDate() - 1)),
-            minDate: new Date(new Date().setDate(new Date().getDate() - 180)),
+            minDate: new Date(new Date().setDate(new Date().getDate() - 90)),
             startingDay: 0,
             showWeeks: false
         };

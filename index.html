@@ -55,10 +55,11 @@
     <h1>Welcome to Mobile Price Global Comparison Web APP</h1>
 
     <div class="row">
-        <p class="col-lg-12">
+        <p class="col-lg-12 margin-less">
             All price information is retrieved from official online stores and local retailers of the listed mobile phone brands. Currency conversion is calculated only as reference and prices may vary. There is no guarantee on the accuracy or availability on the price of the listed mobile phones.
         </p>
     </div>
+
     <div class="row">
         <form class="form-inline" role="form">
             <label for="selProductBrand">Brand</label>
@@ -75,7 +76,6 @@
             <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC"
                     ng-change="selProductSPECChanged()" ng-disabled="! form.selProductModel"
                     ng-options="option.spec as option.spec for option in optProductSPEC | orderBy:'spec'"></select>
-
 
             <label for="selCurrency">Currency</label>
             <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency"
@@ -110,7 +110,7 @@
             </uib-tab>
         </uib-tabset>
     </div>
-    <hr ng-show="GridData"/>
+
     <footer>
         <div class="row">
             <div class="col-sm-3 logo apple-logo"><a href="http://www.apple.com/" target="apple"></a></div>
