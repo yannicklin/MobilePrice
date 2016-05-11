@@ -59,21 +59,17 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                         }
                     })
                     .on("mouseover", function (d) {
-                        if (d.properties.baseprice_date > 0) {
-                            tip.html(d.properties.name)
-                                .style("left", (d3.event.pageX) + "px")
-                                .style("top", (d3.event.pageY - 28) + "px");
-                            tip.transition()
-                                .duration(200)
-                                .style("opacity", .9);
-                        }
+                        tip.html(d.properties.name)
+                            .style("left", (d3.event.pageX) + "px")
+                            .style("top", (d3.event.pageY - 28) + "px");
+                        tip.transition()
+                            .duration(200)
+                            .style("opacity", .9);
                     })
                     .on("mouseout", function (d) {
-                        if (d.properties.baseprice_date > 0) {
-                            tip.transition()
-                                .duration(200)
-                                .style("opacity", 0);
-                        }
+                        tip.transition()
+                            .duration(200)
+                            .style("opacity", 0);
                     });
 
                 // Set Colours for countries with available price, from Yellow (cheap) to Chocolate (expensive)

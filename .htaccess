@@ -1,0 +1,12 @@
+<IfModule mod_headers.c>
+# Set XSS Protection header
+Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
+RewriteRule .* ? [F,L]
+RewriteCond %{HTTP_HOST} ^www\.mobileprice\.twoudia\.work$
+RewriteRule ^/?$ "http\:\/\/mobileprice\.twoudia\.work\/" [R=301,L]
+
+ErrorDocument 404 /pagestolen.html

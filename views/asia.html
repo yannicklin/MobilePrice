@@ -20,7 +20,7 @@
             <td class="right" st-ratio="15">{{row.baseprice_date | currency}}</td>
             <td class="right" st-ratio="15">{{row.baseprice_30days | currency}}</td>
             <td st-ratio="15">{{row.memo}}
-                <a href="{{row.link_uri}}" class="btn btn-info btn-sm" target="_blank" ng-show="row.link_uri">
+                <a href="{{row.link_uri}}" class="btn btn-info btn-sm" target="{{row.link_label}}" rel="nofollow" ng-show="row.link_uri">
                     {{row.link_label}}
                 </a>
             </td>
