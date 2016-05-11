@@ -1,0 +1,12 @@
+User-agent: *
+Disallow: /.openshift/
+Disallow: /fonts/
+Disallow: /geo/
+Disallow: /lib/
+Disallow: /node_modules/
+Disallow: /views/
+Disallow: /phpinfo.php
+Disallow: /currencyUpdate.php
+Disallow: /recordFetch.php
+Disallow: /twoudia.db
+Sitemap: /sitemap.xml
