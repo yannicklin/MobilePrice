@@ -1,4 +1,3 @@
-/// <binding BeforeBuild='beforeBuild' />
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'gulp.*', 'lazypipe', 'del'],
@@ -10,9 +9,13 @@ var jshintProcess  = plugins.lazypipe()
     .pipe(plugins.jshint.reporter)
     .pipe(plugins.jshint.reporter, 'fail');
 
-gulp.task("default", function () {
+gulp.task('cleanMinimized', function () {
+    return plugins.del(['twoudia.min.*', 'vendor.min.*']);
+});
+
+gulp.task("default", ['cleanMinimized'], function () {
     return gulp.src('index-gulp.html')
-        .pipe(plugins.rename("index.html"))
+        .pipe(plugins.rename('index.html'))
         .pipe(plugins.useref({}))
         .pipe(plugins.if('*.js', plugins.ngAnnotate()))
         .pipe(plugins.if('*.js', plugins.uglify()))

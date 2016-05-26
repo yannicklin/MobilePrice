@@ -4,22 +4,22 @@
         <thead>
         <tr>
             <th class="st-sortable" st-ratio="20" st-sort="country">Country</th>
-            <th st-ratio="10">Currency</th>
+            <th st-ratio="12">Currency</th>
             <th class="right" st-ratio="15">Origin</th>
             <th class="right st-sortable" st-ratio="15" st-sort="baseprice_date" st-skip-natural="true">Conversion</th>
             <th class="right st-sortable" st-ratio="15" st-sort="baseprice_30days" st-skip-natural="true" st-sort-default="true">30 Days Average</th>
-            <th st-ratio="15">Memo/Link</th>
+            <th st-ratio="13">Memo/Link</th>
             <th class="right" st-ratio="10">Updated</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="row in rowCollection">
             <td st-ratio="20">{{row.country}}</td>
-            <td st-ratio="10">{{row.currency}}</td>
+            <td st-ratio="12">{{row.currency}}</td>
             <td class="right" st-ratio="15">{{row.price | currency}}</td>
             <td class="right" st-ratio="15">{{row.baseprice_date | currency}}</td>
             <td class="right" st-ratio="15">{{row.baseprice_30days | currency}}</td>
-            <td st-ratio="15">{{row.memo}}
+            <td st-ratio="13">{{row.memo}}
                 <a href="{{row.link_uri}}" class="btn btn-info btn-sm" target="{{row.link_label}}" rel="nofollow" ng-show="row.link_uri">
                     {{row.link_label}}
                 </a>

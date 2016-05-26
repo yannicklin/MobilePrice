@@ -5,8 +5,8 @@
         <thead>
         <tr>
             <th class="st-sortable" st-ratio="20" st-sort="continent">Continent</th>
-            <th class="st-sortable" st-ratio="30" st-sort="country">Country</th>
-            <th st-ratio="10">Currency</th>
+            <th class="st-sortable" st-ratio="28" st-sort="country">Country</th>
+            <th st-ratio="12">Currency</th>
             <th class="right" st-ratio="20">Origin</th>
             <th class="right st-sortable" st-ratio="20" st-sort="baseprice_date" st-skip-natural="true" st-sort-default="true">Conversion</th>
         </tr>
@@ -14,8 +14,8 @@
         <tbody>
         <tr ng-repeat="row in rowCollection">
             <td st-ratio="20">{{row.continent}}</td>
-            <td st-ratio="30">{{row.country}}</td>
-            <td st-ratio="10">{{row.currency}}</td>
+            <td st-ratio="28">{{row.country}}</td>
+            <td st-ratio="12">{{row.currency}}</td>
             <td class="right" st-ratio="20">{{row.price | currency}}</td>
             <td class="right" st-ratio="20">{{row.baseprice_date | currency}}</td>
         </tr>
