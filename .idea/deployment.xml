@@ -1,16 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="MobilePrice-OpenShift" uploadOnCheckin="4ebbb367-37d1-4412-b76e-6039b47ac7c8">
+  <component name="PublishConfigData" serverName="MobilePrice-OpenShift" promptOnLocalOverwrite="false" uploadOnCheckin="4ebbb367-37d1-4412-b76e-6039b47ac7c8">
     <serverData>
+      <paths name="LivingMap-OpenShift">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="MobilePrice-OpenShift">
         <serverdata>
           <mappings>
             <mapping deploy="/app-root/repo" local="$PROJECT_DIR$" web="/" />
           </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/lib" />
+            <excludedPath local="true" path="$PROJECT_DIR$/node_modules" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="OpenShift - Yannicklin@APHASIA">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="OpenShift - Yannicklin@TWOUDIA">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Personal - yannicklin.net">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="Rackspace - Laravel">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
     </serverData>
     <option name="myUploadOnCheckinName" value="MobilePrice-OpenShift" />
-    <option name="myAutoUpload" value="ALWAYS" />
   </component>
 </project>
