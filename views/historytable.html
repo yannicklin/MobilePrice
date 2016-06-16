@@ -1,5 +1,5 @@
 <section>
-    <table st-table="rowCollection" st-safe-src="GridData" class="table table-striped table-hover history" ng-show="GridData.length">
+    <table st-table="rowCollection" st-safe-src="GridData" class="table table-striped table-condensed table-bordered table-hover history" ng-show="GridData.length">
         <thead>
         <tr>
             <th class="st-sortable" st-ratio="10" st-sort="continent">Continent</th>
@@ -25,12 +25,10 @@
             <th st-ratio="10">
                 <input st-search="model" placeholder="model" class="input-sm form-control" type="search"/>
             </th>
-            <th colspan="5">
-            </th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="row in rowCollection">
+        <tr ng-repeat="row in rowCollection" ng-class="row.price == 0 ? 'danger':''">
             <td st-ratio="10">{{row.continent}}</td>
             <td st-ratio="10">{{row.country}}</td>
             <td st-ratio="10">{{row.brand}}</td>
