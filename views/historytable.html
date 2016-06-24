@@ -2,6 +2,23 @@
     <table st-table="rowCollection" st-safe-src="GridData" class="table table-striped table-condensed table-bordered table-hover history" ng-show="GridData.length">
         <thead>
         <tr>
+            <th st-ratio="12" class="text-center">
+                Filters
+            </th>
+            <th st-ratio="22">
+                <input st-search="continent" placeholder="continent" class="input-sm form-control" type="search"/>
+            </th>
+            <th st-ratio="22">
+                <input st-search="country" placeholder="country" class="input-sm form-control" type="search"/>
+            </th>
+            <th st-ratio="22">
+                <input st-search="brand" placeholder="brand" class="input-sm form-control" type="search"/>
+            </th>
+            <th st-ratio="22">
+                <input st-search="model" placeholder="model" class="input-sm form-control" type="search"/>
+            </th>
+        </tr>
+        <tr>
             <th class="st-sortable" st-ratio="10" st-sort="continent">Continent</th>
             <th class="st-sortable" st-ratio="10" st-sort="country">Country</th>
             <th class="st-sortable" st-ratio="10" st-sort="brand">Brand</th>
@@ -11,20 +28,6 @@
             <th class="right" st-ratio="10">Price</th>
             <th st-ratio="10">Memo</th>
             <th class="st-sortable" class="right" st-ratio="10" st-sort="updatedate">Updated</th>
-        </tr>
-        <tr>
-            <th st-ratio="10">
-                <input st-search="continent" placeholder="continent" class="input-sm form-control" type="search"/>
-            </th>
-            <th st-ratio="10">
-                <input st-search="country" placeholder="country" class="input-sm form-control" type="search"/>
-            </th>
-            <th st-ratio="10">
-                <input st-search="brand" placeholder="brand" class="input-sm form-control" type="search"/>
-            </th>
-            <th st-ratio="10">
-                <input st-search="model" placeholder="model" class="input-sm form-control" type="search"/>
-            </th>
         </tr>
         </thead>
         <tbody>
