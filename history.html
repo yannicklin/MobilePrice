@@ -30,7 +30,7 @@
     <link href="https://business.google.com/u/4/b/117913687153949394185/" rel="publisher">
 
     <script src="vendor.min.js"></script>
-    <script src="twoudia.min.js"></script>
+    <script src="twoudia.js"></script>
     <link rel="stylesheet" href="vendor.min.css">
     <link rel="stylesheet" href="twoudia.min.css">
 
@@ -75,6 +75,15 @@
     </header>
 
     <section class="container" ng-controller="HistoryCtrl">
+        <div class="row">
+            <form class="form-inline dash-border" role="form">
+                <label for="selProductBrand">Brand</label>
+                <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand"
+                        ng-change="historyEnquiry()"
+                        ng-options="option.brand as option.brand for option in optProductBrand | orderBy:'brand'"></select>
+            </form>
+        </div>
+
         <div class="row" ng-show="GridData">
             <div ng-include="'views/historytable.html'"></div>
         </div>
