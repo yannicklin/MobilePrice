@@ -47,3 +47,15 @@ try {
 } catch (PDOException $e) {
     echo 'Exception : ' . $e->getMessage();
 }
+
+// Update the t_pricetable Table with assigned/current date
+$objInsertQuery = $sqlDB->prepare("INSERT OR REPLACE INTO t_pricetable(brand, model, spec, detail, country, country_iso, continent, subregion, currency, price, memo, link_label, link_uri, updatedate, exchange_date) 
+SELECT v_product.brand, v_product.model, v_product.spec, v_product.detail, country.country, country.country_iso, country.continent, country.subregion, country.currency, priceT1.price, priceT1.memo, priceT1.link_label, priceT1.link_uri, priceT1.recdate AS updatedate, v_pricetimescope.exchange_date
+	FROM price priceT1 INNER JOIN v_pricetimescope ON priceT1.product_id = v_pricetimescope.product_id AND priceT1.country_id = v_pricetimescope.country_id AND priceT1.recdate = v_pricetimescope.recdate INNER JOIN v_product ON priceT1.product_id = v_product.id INNER JOIN country ON priceT1.country_id = country.id
+	WHERE priceT1.price > 0 AND v_pricetimescope.exchange_date = :recdate ;");
+try {
+    $objInsertQuery->bindParam(':recdate', $recDate, PDO::PARAM_STR);
+    $objInsertQuery->execute();
+} catch (PDOException $e) {
+    echo 'Exception : ' . $e->getMessage();
+}
