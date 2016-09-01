@@ -1,4 +1,6 @@
 <?php
+
+
 /**
  * Function: get SQLite records into JSON result
  * User: Yannick Lin
