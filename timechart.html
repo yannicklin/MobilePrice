@@ -10,13 +10,13 @@
     <meta name="robots" content="index, nofollow">
     <meta name="keywords" content="Mobile, Price, Currency, Conversion">
     <meta name="author" content="Yannick Lin - TWOUDIA">
-    <meta name="description" content="Web Service to collect origin price and the converted with daily exchange rate for all major cellular brands, such as Apple, Sony, Samsung, LG, and etc.">
+    <meta name="description" content="Mobile Price Trend Charts with currency rate.">
     <title>Global Mobile Price Comparison</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="canonical" href="http://mobileprice.twoudia.work/" />
     <link rel="alternate" href="http://mobileprice.twoudia.work/" hreflang="x-default" />
-    <meta property="og:title" content="Web Service to collect origin price and the converted with daily exchange rate for all major cellular brands, such as Apple, Sony, Samsung, LG, and etc.">
+    <meta property="og:title" content="Mobile Price Trend Charts with currency rate.">
     <meta property="og:site_name" content="Global Mobile Price Comparison">
     <meta property="og:url" content="http://mobileprice.twoudia.work/">
     <meta property="og:description" content="All price information is retrieved from official online stores and local retailers of the listed mobile phone brands. Currency conversion is calculated only as reference and prices may vary. There is no guarantee on the accuracy or availability on the price of the listed mobile phones.">
@@ -26,29 +26,11 @@
     <meta name="twitter:site" content="@twoudia">
     <link href="https://business.google.com/u/4/b/117913687153949394185/" rel="publisher">
 
-    <!-- build:js vendor.min.js -->
-    <script src="lib/angular/angular.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-animate/angular-animate.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-sanitize/angular-sanitize.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-filter/dist/angular-filter.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-bootstrap/ui-bootstrap-tpls.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-smart-table/dist/smart-table.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/d3/d3.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/d3-geo-projection/d3.geo.projection.min.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/topojson/topojson.js" type="text/javascript" charset="UTF-8"></script>
-    <script src="lib/angular-loading-bar/build/loading-bar.min.js" type="text/javascript" charset="UTF-8"></script>
-    <!-- endbuild -->
-    <!-- build:js twoudia.min.js -->
-    <script src="twoudia.js" type="text/javascript" charset="UTF-8"></script>
-    <!-- endbuild -->
-    <!-- build:css vendor.min.css -->
-    <link href="bootstrap.min.css" rel="stylesheet" />
-    <link href="lib/angular-bootstrap/ui-bootstrap-csp.css" rel="stylesheet" />
-    <link href="lib/angular-loading-bar/build/loading-bar.min.css" rel="stylesheet" media="all" />
-    <!-- endbuild -->
-    <!-- build:css twoudia.min.css -->
-    <link href="twoudia.css" rel="stylesheet" />
-    <!-- endbuild -->
+    <script src="vendor.min.js"></script>
+    <!-- <script src="twoudia.min.js"></script> -->
+    <script src="twoudia.min.js"></script>
+    <link rel="stylesheet" href="vendor.min.css">
+    <link rel="stylesheet" href="twoudia.min.css">
 
     <!-- New Relic JS -->
     <script type="text/javascript" charset="UTF-8">
@@ -78,71 +60,75 @@
 <body>
 <div ng-app="MobilePriceCompare.TWOUDIA" ng-controller="TWCtrl">
 <header class="container">
-    <h1>Welcome to Mobile Price Global Comparison Web APP</h1>
+    <h1>Mobile Price Trend with Currency Rate</h1>
 
     <div class="row">
         <p class="col-lg-12 margin-less">
-            All price information is retrieved from official online stores and local retailers of the listed mobile phone brands. Currency conversion is calculated only as reference and prices may vary. There is no guarantee on the accuracy or availability on the price of the listed mobile phones.
+            All price information is retrieved from official online stores and local retailers of the listed mobile phone brands. Due to the huge work on collecting and correcting, there is no guarantee on the accuracy. The time ranges are set as recent 30, 60, and 90 days of history for analysis.
         </p>
+    </div>
+    <div class="row">
+        <div class="alert alert-danger" role="alert">Record with Price == 0 means the product is discontinued in the target country after the updated date. For example, it is unavailable for Xiaomi Redmi Note in its official China website after 14 June, 2016. </div>
     </div>
 </header>
 
-<section class="container" ng-controller="MainCtrl">
+<section class="container" ng-controller="TrendCtrl">
     <div class="row">
         <form class="form-inline dash-border" role="form">
-            <label for="selProductBrand">Brand</label>
-            <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand"
-                    ng-change="selProductBrandChanged()"
-                    ng-options="option.brand as option.brand for option in optProductBrand | orderBy:'brand'"></select>
+            <div class="col-sm-offset-1 col-sm-9 col-md-8 form-group">
+                <div class="form-group-row">
+                    <label for="selProductBrand">Brand</label>
+                    <select class="form-control" name="selProductBrand" id="selProductBrand" ng-model="form.selProductBrand"
+                            ng-change="selProductBrandChanged()"
+                            ng-options="option.brand as option.brand for option in optProductBrand | orderBy:'brand'"></select>
 
-            <label for="selProductModel">Model</label>
-            <select class="form-control" name="selProductModel" id="selProductModel" ng-model="form.selProductModel"
-                    ng-change="selProductModelChanged()" ng-disabled="! form.selProductBrand"
-                    ng-options="option.model as option.model for option in optProductModel | orderBy:'model'"></select>
+                    <label for="selProductModel">Model</label>
+                    <select class="form-control" name="selProductModel" id="selProductModel" ng-model="form.selProductModel"
+                            ng-change="selProductModelChanged()" ng-disabled="! form.selProductBrand"
+                            ng-options="option.model as option.model for option in optProductModel | orderBy:'model'"></select>
 
-            <label for="selProductSPEC">SPEC</label>
-            <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC"
-                    ng-disabled="! form.selProductModel"
-                    ng-options="option.spec as option.spec for option in optProductSPEC | orderBy:'spec'"></select>
+                    <label for="selProductSPEC">SPEC</label>
+                    <select class="form-control" name="selProductSPEC" id="selProductSPEC" ng-model="form.selProductSPEC"
+                            ng-change="selProductSPECChanged()" ng-disabled="! form.selProductModel"
+                            ng-options="option.spec as option.spec for option in optProductSPEC | orderBy:'spec'"></select>
+                </div>
+                <div class="form-group-row">
+                    <label for="selCountry">Country</label>
+                    <select class="form-control" name="selCountry" id="selCountry" ng-model="form.selCountry"
+                            ng-disabled="! optCountry"
+                            ng-options="option.country_iso as option.country for option in optCountry | orderBy:'country'"></select>
 
-            <label for="selCurrency">Currency</label>
-            <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency"
-                    ng-change="selCurrencyChanged()"
-                    ng-options="option.currency as option.currency for option in optCurrency | orderBy:'currency'"></select>
+                    <label for="selCurrency">Currency</label>
+                    <select class="form-control" name="selCurrency" id="selCurrency" ng-model="form.selCurrency"
+                            ng-disabled="! optCountry"
+                            ng-options="option.currency as option.currency for option in optCurrency | orderBy:'currency'"></select>
 
-            <label for="comDate">Exchange Date</label>
-
-            <div class="input-group" id="comDate" name="comDate">
-                <input type="text" class="form-control" name="inpEXDate" id="inpEXDate"
-                       uib-datepicker-popup="yyyy-MM-dd"
-                       ng-model="form.inpEXDate" is-open="inpEXDatePopup.opened" datepicker-options="inpEXDateOpt"
-                       ng-required="true" close-text="Close" ng-change="condsCheck()"/>
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-info" ng-click="inpEXDateClick()">
-                <i class="glyphicon glyphicon-calendar"></i>
-            </button>
-          </span>
+                    <label for="selDateRange">Range</label>
+                    <select class="form-control" name="selDateRange" id="selDateRange" ng-model="form.selDateRange"
+                            ng-disabled="! optCountry"
+                            ng-options="option.value as option.label for option in optDateRange"></select>
+                </div>
             </div>
-
-            <label for="btnPriceQuery"></label>
-            <button class="btn btn-success form-control" name="btnPriceQuery" id="btnPriceQuery"
-                    ng-show="condsCompleted" ng-click="priceEnquiry()">
-                Search
-            </button>
+            <div class="form-group col-sm-2">
+                <label for="btnTrendQuery"></label>
+                <button class="btn btn-success form-control" name="btnTrendQuery" id="btnTrendQuery"
+                        ng-show="condsCompleted" ng-click="trendEnquiry()">
+                    Search
+                </button>
+            </div>
+            <div class="clearfix"></div>
         </form>
     </div>
-    <div class="row" ng-show="GridData">
-        <uib-tabset active="activeJustified" justified="true" type="pills">
-            <uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
-                <div ng-include="tab.template"></div>
-            </uib-tab>
-        </uib-tabset>
+
+    <div class="row" ng-show="ChartData">
+        <div ng-include="'views/chart.html'"></div>
     </div>
+
     <div class="row">
-        <p class="col-lg-6 margin-less padding-10px dash-border">
-            For the converted price trend with currency rate, please go here: <a class="btn btn-warning btn-md" title="MOBILE PRICE TREND" href="timechart.html" target="_self">TREND</a>
+        <p class="col-sm-6 margin-less padding-10px dash-border">
+            To access Mobile Price Comparison from : <a class="btn btn-warning btn-md" href="http://mobileprice.twoudia.work/" title="MOBILE PRICE HOME" target="_self">Price Compare</a>
         </p>
-        <p class="col-lg-6 margin-less padding-10px dash-border">
+        <p class="col-sm-6 margin-less padding-10px dash-border">
             For the history of price updated, please go here: <a class="btn btn-info btn-md" title="MOBILE PRICE HISTORY" href="history.html" target="_self">History</a>
         </p>
     </div>
