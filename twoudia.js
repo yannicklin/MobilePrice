@@ -506,7 +506,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
             vis.selectAll("*").remove();
 
             var width = parseInt(d3.select('#chart').style('width'), 10) * 0.9, height = 0.5 * width;
-            var margin = {top: 10, right: 10, bottom: 50, left: 50};
+            var margin = {top: 10, right: 20, bottom: 50, left: 50};
             var drawW = width - (margin.left + margin.right), drawH = height - (margin.top + margin.bottom);
             var chartSVG = vis.attr("width", width).attr("height", height).append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
