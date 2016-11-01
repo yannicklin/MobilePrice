@@ -292,41 +292,51 @@ tfoot .pagination {
 
 /* FOOTER */
 footer .logo {
-    background-size: contain;
+    background-size: cover;
     margin-top: 6px;
     background-repeat: no-repeat;
+    -ms-transform: scale(1);
+    -webkit-transform: scale(1);
+    transform: scale(1);
 }
 footer .logo a {
     display: block;
-    min-height: 35px;
+    height: 35px;
 }
 footer .logo-apple, footer .logo-htc, footer .logo-lg, footer .logo-microsoft, footer .logo-motorola, footer .logo-oppo, footer .logo-samsung, footer .logo-sony, footer .logo-xiaomi
 {
     max-width: 100%;
-    background-size: 100%;
     background-image: url('logo-brands.png');
 }
-footer .logo-apple { background-position: 0 0; background-size: 100% 900%; }
-footer .logo-htc { background-position: 0 12.5%; background-size: 100% 900%; }
-footer .logo-lg { background-position: 0 25%; background-size: 100% 900%; }
-footer .logo-microsoft { background-position: 0 37.5%; background-size: 100% 900%; }
-footer .logo-motorola { background-position: 0 50%; background-size: 100% 900%; }
-footer .logo-oppo { background-position: 0 62.5%; background-size: 100% 900%; }
-footer .logo-samsung { background-position: 0 75%; background-size: 100% 900%; }
-footer .logo-sony { background-position: 0 87.5%; background-size: 100% 900%; }
-footer .logo-xiaomi { background-position: 0 100%; background-size: 100% 900%; }
+footer .logo-apple { background-position: 0 0; }
+footer .logo-htc { background-position: 0 12.5%; }
+footer .logo-lg { background-position: 0 25%; }
+footer .logo-microsoft { background-position: 0 37.5%; }
+footer .logo-motorola { background-position: 0 50%; }
+footer .logo-oppo { background-position: 0 62.5%; }
+footer .logo-samsung { background-position: 0 75%; }
+footer .logo-sony { background-position: 0 87.5%; }
+footer .logo-xiaomi { background-position: 0 100%; }
 footer .logo-twoudia, footer .logo-openexchangerates, footer .logo-openshift
 {
     max-width: 100%;
-    background-size: 100%;
     background-image: url('logo-vendors.png');
 }
-footer .logo-twoudia { background-position: 0 0; background-size: 100% 300%; }
-footer .logo-openexchangerates { background-position: 0 50%; background-size: 100% 300%; }
-footer .logo-openshift { background-position: 0 100%; background-size: 100% 300%; }
+footer .logo-twoudia { background-position: 0 5%; }
+footer .logo-openexchangerates { background-position: 0 50%; }
+footer .logo-openshift { background-position: 0 95%; }
 
 
 /* MEDIA SIZE */
+/* Not Mobile (more than 500px) */
+@media (min-width: 500px) {
+    footer .logo {
+        background-size: initial;
+    }
+    footer .logo a {
+        height: 50px;
+    }
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
     h1 {

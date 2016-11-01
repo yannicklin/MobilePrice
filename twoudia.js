@@ -551,20 +551,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
             chartSVG.append('g').attr({
                     class: "grid",
                     transform: 'translate(0,' + drawH + ')'
-                }).call(xGrid)
-                .on("mouseover", function (d) {
-                    tip.html( 'Date: ' + d )
-                        .style("left", (d3.event.pageX) + "px")
-                        .style("top", (d3.event.pageY - 20) + "px");
-                    tip.transition()
-                        .duration(200)
-                        .style("opacity", .9);
-                })
-                .on("mouseout", function () {
-                    tip.transition()
-                        .duration(200)
-                        .style("opacity", 0);
-                });
+                }).call(xGrid);
             chartSVG.append('g').attr({
                     class: "y-grid"
                 }).call(yGrid);
