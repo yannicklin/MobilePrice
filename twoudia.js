@@ -499,7 +499,6 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
 
     .controller("ChartCtrl", ["$scope", "$log", "$filter", "$window", function ($scope, $log, $filter, $window) {
         var vis = d3.select("#chart").append("svg");
-        var tip = d3.select("#chart").append("div").attr("class", "tooltip").style("opacity", 0);
         var Dataset;
 
         function D3ChartDraw() {
@@ -533,7 +532,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                     transform: 'translate(0,' + drawH + ')'
                 }).call(xAxis)
                 .append("text")
-                    .attr("class", "axis-label")
+                    .classed("axis-label", true)
                     .attr("x", drawW)
                     .attr("y", -6)
                     .style("text-anchor", "end")
@@ -542,7 +541,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                     class: "y axis"
                 }).call(yAxis)
                 .append("text")
-                    .attr("class", "axis-label")
+                    .classed("axis-label", true)
                     .attr("transform", "rotate(-90)")
                     .attr("y", 6)
                     .attr("dy", ".71em")
@@ -565,45 +564,214 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                 .attr("transform", "rotate(-45)");
 
             // Draw the line of price
-            function DrawLine(data, lineClass, pointClass, valueColumn, radiusDotCircle, nameTip4valueColumn) {
+            // Combine the idea of animation from PMSI-AlignAlytics (http://http://dimplejs.org/)
+            function DrawLine(data, hexColor, nameTipColumn, radiusDotCircle, labelTipColumn) {
+
+                funcDrawTip = function (d, shape, nameTipColumn, labelTipColumn) {
+
+                    function getTooltipText (e) {
+                        var rows = [];
+                        rows.push('Date: ' + e['tip_date']);
+                        rows.push(labelTipColumn + ': ' + e[nameTipColumn]);
+
+                        // Get distinct text rows to deal with cases where 2 axes have the same dimensionality
+                        return rows.filter(function (elem, pos) { return rows.indexOf(elem) === pos; });
+                    }
+
+                    // The margin between the text and the box
+                    var tipTextPadding = 5,
+                        // The margin between the ring and the tipText
+                        tipTextMargin = 10,
+                        // The popup animation duration in ms
+                        animDuration = 500,
+                        // Collect some facts about the highlighted point
+                        selectedShape = d3.select(shape),
+                        cx = parseFloat(selectedShape.attr("cx")),
+                        cy = parseFloat(selectedShape.attr("cy")),
+                        r = parseFloat(selectedShape.attr("r")),
+                        fill = selectedShape.attr("fill"),
+
+                        // The running y value for the text elements
+                        y = 0,
+                        w = 0,
+                        h = 0,
+                        tipText = getTooltipText(d),
+                        translateX,
+                        translateY,
+
+                        // Tip Background Color and Border Color
+                        tipBackgroundColor = d3.rgb(
+                            d3.rgb(fill).r + 0.6 * (255 - d3.rgb(fill).r),
+                            d3.rgb(fill).g + 0.6 * (255 - d3.rgb(fill).g),
+                            d3.rgb(fill).b + 0.6 * (255 - d3.rgb(fill).b)
+                        ),
+                        tipBorderColor = d3.rgb(
+                            d3.rgb(fill).r + 0.8 * (255 - d3.rgb(fill).r),
+                            d3.rgb(fill).g + 0.8 * (255 - d3.rgb(fill).g),
+                            d3.rgb(fill).b + 0.8 * (255 - d3.rgb(fill).b)
+                        );
+
+                    if (chartSVG._tooltipGroup !== null && chartSVG._tooltipGroup !== undefined) {
+                        chartSVG._tooltipGroup.remove();
+                    }
+                    chartSVG._tooltipGroup = chartSVG.append("g");
+
+                    // Add a ring around the data point
+                    chartSVG._tooltipGroup.append("circle")
+                        .attr("cx", cx)
+                        .attr("cy", cy)
+                        .attr("r", r)
+                        .call(function () {
+                            this.attr("opacity", 0)
+                                .style("fill", "none")
+                                .style("stroke", fill)
+                                .style("stroke-width", 1);
+                        })
+                        .transition()
+                        .duration(animDuration / 2)
+                        .ease("linear")
+                        .attr("r", r + 4)
+                        .call(function () {
+                            this.attr("opacity", 1)
+                                .style("stroke-width", 2);
+                        });
+
+                    // Add a drop line to the x axis
+                    chartSVG._tooltipGroup.append("line")
+                        .attr("x1", cx)
+                        .attr("y1", cy + r + 4)
+                        .attr("x2", cx)
+                        .attr("y2", cy + r + 4)
+                        .call(function () {
+                                this.style("fill", "none")
+                                    .style("stroke", fill)
+                                    .style("stroke-width", 2)
+                                    .style("stroke-dasharray", ("3, 3"))
+                                    .style("opacity", 0.8);
+                        })
+                        .transition()
+                        .delay(animDuration / 2)
+                        .duration(animDuration / 2)
+                        .ease("linear")
+                        .attr("y2", drawH);
+
+                    // Add a drop line to the y axis
+                    chartSVG._tooltipGroup.append("line")
+                        .attr("x1", cx  - r - 4)
+                        .attr("y1", cy)
+                        .attr("x2", cx  - r - 4)
+                        .attr("y2", cy)
+                        .call(function () {
+                            this.style("fill", "none")
+                                .style("stroke", fill)
+                                .style("stroke-width", 2)
+                                .style("stroke-dasharray", ("3, 3"))
+                                .style("opacity", 0.8);
+                        })
+                        .transition()
+                        .delay(animDuration / 2)
+                        .duration(animDuration / 2)
+                        .ease("linear")
+                        .attr("x2", 0);
+
+                    // Add a group for text
+                    var t = chartSVG._tooltipGroup.append("g");
+                    // Create a box for the popup in the text group
+                    var box = t.append("rect");
+
+                    // Create a text object for every row in the popup
+                    t.selectAll(".tipText").data(tipText).enter()
+                        .append("text")
+                        .text(function(d){ return d; })
+                        .classed("tipText", true);
+
+                    // Get the max height and width of the text items
+                    t.each(function () {
+                        w = (this.getBBox().width > w ? this.getBBox().width : w);
+                        h = (this.getBBox().height > h ? this.getBBox().height : h);
+                    });
+
+                    // Position the text relative to the bubble, the absolute positioning
+                    // will be done by translating the group
+                    t.selectAll("text")
+                        .attr("x", 0)
+                        .attr("y", function () {
+                            // Increment the y position
+                            y += this.getBBox().height;
+                            // Position the text at the centre point
+                            return y - (this.getBBox().height / 2) + tipTextPadding ;
+                        });
+
+                    // Draw the box with a margin around the text
+                    box.attr("x", -tipTextPadding)
+                        .attr("y", -tipTextPadding)
+                        .attr("height", Math.ceil(y + tipTextPadding * 2 ))
+                        .attr("width", w + 2 * tipTextPadding)
+                        .attr("rx", 5)
+                        .attr("ry", 5)
+                        .call(function () {
+                            this.style("fill", tipBackgroundColor)
+                                .style("stroke", tipBorderColor)
+                                .style("stroke-width", 2)
+                                .style("opacity", 0.8);
+                        });
+
+                    // Shift the popup around to avoid overlapping the svg edge
+                    if (cx + r + 10 + (tipTextPadding + tipTextMargin) * 2 + w < drawW) {
+                        // Draw centre right
+                        translateX = cx + r + 4 + tipTextMargin;
+                    } else {
+                        // Draw centre left
+                        translateX = cx - (r + 4 + (tipTextPadding * 2 + tipTextMargin) + w);
+                    }
+                    if (cy + Math.floor(y / 2) + tipTextMargin + tipTextPadding + 2  < drawH) {
+                        // Draw centre down
+                        translateY = cy - (Math.floor(y / 2)  + 2);
+                    } else {
+                        // Draw centre top
+                        translateY = drawH - tipTextMargin  - ( tipTextPadding + 2) * 2;
+                    }
+                    t.attr("transform", "translate(" + translateX + " , " + translateY + ")");
+                };
+
+                funcRemoveTip = function (d, shape) {
+                    if (chartSVG._tooltipGroup) {
+                        chartSVG._tooltipGroup.remove();
+                    }
+                };
+
+
                 var line = d3.svg.line().interpolate("cardinal")
                     .x(function (d) {
-                        return x(d.ratedate);
+                        return x(d['ratedate']);
                     })
                     .y(function (d) {
-                        return y(d[valueColumn]);
+                        return y(d[nameTipColumn]);
                     });
 
                 chartSVG.append('path').datum(Dataset)
                     .attr({
-                        class: lineClass,
                         d: line
-                    });
+                    })
+                    .style("fill", 'none')
+                    .style("stroke", hexColor)
+                    .style("opacity", 0.6)
+                    .style("stroke-width", '1px');
 
                 chartSVG.selectAll(".dot")
                     .data(data)
-                    .enter().append("circle")
-                    .attr("class", pointClass)
-                    .attr("cy", function (d) { return y(d[valueColumn]); } ) //set y
-                    .attr("cx", function (d) { return x(d.ratedate); } ) //set x
+                    .enter()
+                    .append("circle")
+                    .attr("cy", function (d) { return y(d[nameTipColumn]); } ) //set y
+                    .attr("cx", function (d) { return x(d['ratedate']); } ) //set x
                     .attr("r", radiusDotCircle)
-                    .on("mouseover", function (d) {
-                        tip.html( 'Date: ' + d.tip_date + '<br />' + nameTip4valueColumn + ': ' + d[valueColumn] )
-                            .style("left", (d3.event.pageX) + "px")
-                            .style("top", (d3.event.pageY - 20) + "px");
-                        tip.transition()
-                            .duration(200)
-                            .style("opacity", .9);
-                    })
-                    .on("mouseout", function () {
-                        tip.transition()
-                            .duration(200)
-                            .style("opacity", 0);
-                    });
+                    .attr("fill", hexColor)
+                    .attr("stroke", hexColor)
+                    .on("mouseover", function (d) { funcDrawTip(d, this, nameTipColumn, labelTipColumn)})
+                    .on("mouseleave", function (d) { funcRemoveTip(d, this)});
             }
-
-            DrawLine(Dataset, 'dashline line-bt-red', 'dot-bt-red', 'baseprice_30days', 2.5, 'Running Average');
-            DrawLine(Dataset, 'solidline line-bt-darkblue', 'dot-bt-darkblue', 'baseprice_date', 4, 'Price');
+            DrawLine(Dataset, '#d9534f', 'baseprice_30days', 3, '30days Avg'); //RED
+            DrawLine(Dataset, '#428bca', 'baseprice_date', 4, 'Price'); //DARKBLUE
 
             // Prepare Legend
             var colorClass = d3.scale.ordinal()
@@ -623,7 +791,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
             // draw legend text
             legend.append("text")
                 .attr("x", drawW - 24)
-                .attr("y", 9)
+                .attr("y", 7)
                 .attr("dy", ".35em")
                 .style("text-anchor", "end")
                 .text(function(d) { return d;})

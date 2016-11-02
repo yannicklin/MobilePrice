@@ -99,11 +99,11 @@ form select.form-control {
     margin: auto;
     width: 100vw;
 }
-.map .tooltip, .chart .tooltip {
+.map .tooltip{
     position: absolute;
     text-align: center;
     width: 10rem;
-    height: 1.5rem;
+    height: auto;
     padding: 2px;
     background: lightsteelblue;
     border: 0;
@@ -126,17 +126,10 @@ form select.form-control {
     line-height: 1.2rem;
     z-index: 999;
 }
-.chart .tooltip {
+.chart .tipText {
     position: absolute;
     text-align: center;
-    width: 10rem;
-    height: 4rem;
-    padding: 2px;
-    background: #f0ad4e;
-    border: 0;
-    border-radius: 5px;
     pointer-events: none;
-    line-height: 1.1rem;
     font-size: 8px;
 }
 .chart .axis path, .chart .axis line {
@@ -166,41 +159,6 @@ form select.form-control {
     stroke-dasharray: 3,3;
     opacity: .6;
 }
-.chart .line-bt-red {
-    stroke: #d9534f;
-}
-.chart .line-bt-blue {
-    stroke: #5bc0de;
-}
-.chart .line-bt-darkblue {
-    stroke: #428bca;
-}
-.chart .line-bt-yellow {
-    stroke: #f0ad4e;
-}
-.chart .line-bt-green {
-    stroke: #5cb85c;
-}
-.chart .dot-bt-red {
-    fill: #d9534f;
-    cursor: pointer;
-}
-.chart .dot-bt-blue {
-    fill: #5bc0de;
-    cursor: pointer;
-}
-.chart .dot-bt-darkblue {
-    fill: #428bca;
-    cursor: pointer;
-}
-.chart .dot-bt-yellow {
-    fill: #f0ad4e;
-    cursor: pointer;
-}
-.chart .dot-bt-green {
-    fill: #5cb85c;
-    cursor: pointer;
-}
 .chart .rect-bt-red {
     fill: #d9534f;
     width: 1rem;
@@ -211,7 +169,7 @@ form select.form-control {
     width: 1rem;
     height: 1rem;
 }
-.rect-bt-darkblue {
+.chart .rect-bt-darkblue {
     fill: #428bca;
     width: 1rem;
     height: 1rem;
@@ -345,7 +303,7 @@ footer .logo-openshift { background-position: 0 95%; }
     .map, .chart{
         width: 90vw;
     }
-    .map .tooltip, .chart .tooltip {
+    .map .tooltip {
         font-size: 9px;
     }
     .table:not(.history) {
@@ -370,7 +328,7 @@ footer .logo-openshift { background-position: 0 95%; }
     .map, .chart {
         width: 75vw;
     }
-    .map .tooltip, .chart .tooltip {
+    .map .tooltip {
         font-size: 10px;
     }
     .table:not(.history) {
@@ -399,7 +357,7 @@ footer .logo-openshift { background-position: 0 95%; }
     .map, .chart {
         width: 60vw;
     }
-    .map .tooltip, .chart .tooltip {
+    .map .tooltip, .chart .tipText {
         font-size: 12px;
     }
     .table:not(.history) {
