@@ -49,7 +49,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                     .style("stroke", "white")
                     .on("click", function (d) {
                         if (d.properties.baseprice_date > 0) {
-                            popover.html(d.properties.name + '<br /><br />Original: ' + d.properties.currency + ' ' + d.properties.price + '<br />Converted: ' + d.properties.basecurrency + ' ' + d.properties.baseprice_date)
+                            popover.html('<div class="text_underline">' + d.properties.name + '</div>Original: ' + d.properties.currency + ' ' + d.properties.price + '<br />Converted: ' + d.properties.basecurrency + ' ' + d.properties.baseprice_date)
                                 .style("left", parseInt(vis.node().getBoundingClientRect().left + window.pageXOffset +  width /2 - 100)  + "px")
                                 .style("top", parseInt(vis.node().getBoundingClientRect().top + window.pageYOffset + height /2 - 30)  + "px");
                             popover.transition()
@@ -76,7 +76,7 @@ angular.module("MobilePriceCompare.TWOUDIA", ["ngAnimate", "ui.bootstrap", "smar
                     });
 
                 // Set Colours for countries with available price, from Yellow (cheap) to Chocolate (expensive)
-                var viscolour = d3.scale.linear().domain([pricerangeMIN, pricerangeMAX]).range(["#FFFFCC", "#E8A317"]);
+                var viscolour = d3.scale.linear().domain([pricerangeMIN, pricerangeMAX]).range(["#FFFFCC", "#E6A817"]);
                 vis.selectAll("path").data(twArea.features).attr({
                     d: path,
                     fill: function (d) {

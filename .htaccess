@@ -21,14 +21,4 @@ ExpiresByType text/css "access plus 1 month"
 ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
-
-RewriteEngine On
-RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
-RewriteRule .* ? [F,L]
-RewriteCond %{HTTP:X-Forwarded-Proto} !https
-RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
-RewriteCond %{HTTP_HOST} ^www\.mobileprice\.twoudia\.work$
-RewriteRule ^/?$ "https\:\/\/mobileprice\.twoudia\.work\/" [R=301,L]
-
-
 ErrorDocument 404 /pagestolen.html

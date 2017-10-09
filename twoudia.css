@@ -14,6 +14,9 @@
 .margin-less {
     margin: 0;
 }
+.text_underline {
+    text-decoration: underline;
+}
 a {
     color: #069;
     text-decoration: none;
@@ -275,15 +278,17 @@ footer .logo-oppo { background-position: 0 62.5%; }
 footer .logo-samsung { background-position: 0 75%; }
 footer .logo-sony { background-position: 0 87.5%; }
 footer .logo-xiaomi { background-position: 0 100%; }
-footer .logo-twoudia, footer .logo-openexchangerates, footer .logo-openshift
+footer .logo-twoudia, footer .logo-openexchangerates, footer .logo-plesk-ms-azure, footer .logo-openshift
 {
     max-width: 100%;
     background-image: url('logo-vendors.png');
 }
 footer .logo-twoudia { background-position: 0 5%; }
 footer .logo-openexchangerates { background-position: 0 50%; }
+footer .logo-plesk-ms-azure { background-position: 0 95%; }
+/*
 footer .logo-openshift { background-position: 0 95%; }
-
+*/
 
 /* MEDIA SIZE */
 /* Not Mobile (more than 500px) */

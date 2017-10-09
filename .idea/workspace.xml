@@ -1,0 +1,1173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="969a1492-9445-4372-9829-94654576bffa" name="Default" comment="ssl check and minor reformat of js.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="MobilePrice.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <ignored mask="*.json" />
+    <ignored mask="*.min.*" />
+    <ignored path=".well-known/" />
+    <ignored mask="*.db" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" show_ignored="true" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="FLATTEN" value="false" />
+    <option name="GROUP_BY_TYPE" value="true" />
+    <option name="SORT_CHILDREN" value="false" />
+    <option name="SHOW_TABLE_CONSTRAINTS" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="MobilePrice" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf />
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>currency</find>
+      <find>underline</find>
+      <find>drawMAPD3</find>
+    </findStrings>
+  </component>
+  <component name="FrameworkCommandLineHistory">
+    <commandsHistory>
+      <command text="bower install angular-smart-table -S" />
+      <command text="bower d3" />
+      <command text="bower d3 -v" />
+      <command text="d3 remove angular-ui-grid -S" />
+      <command text="d3 remove angular-ui-grid -save" />
+      <command text="bower remove angular-ui-grid -S" />
+      <command text="bower uninstall angular-ui-grid -S" />
+      <command text="bower install angular-smart-table -S" />
+      <command text="npm install --save-dev gulp" />
+      <command text="gulp" />
+      <command text="npm install -g gulp" />
+      <command text="npm install --save-dev gulp" />
+      <command text="gulpfile.js" />
+      <command text="gulp minPackage" />
+      <command text="npm install" />
+      <command text="gulp miniPackage" />
+      <command text="gulp minPackage" />
+      <command text="npm install" />
+      <command text="gulp" />
+      <command text="npm update" />
+      <command text="bower update" />
+      <command text="npm update" />
+      <command text="gulp" />
+      <command text="glup" />
+      <command text="gulp" />
+    </commandsHistory>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="ONTO" value="refs/remotes/origin/master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Yannick Lin &lt;yannicklin@twoudia.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="angularjs2.x" />
+      </map>
+    </option>
+    <option name="RESET_MODE" value="HARD" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
+    <push-targets>
+      <push-target-info target-remote="origin" target-branch="master" repo="$PROJECT_DIR$" source="smarttable" />
+    </push-targets>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/geo/oceania.json" />
+        <option value="$PROJECT_DIR$/.openshift/cron/hourly/currencyupdate.allow" />
+        <option value="$PROJECT_DIR$/geo/africa-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/asia-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/europe-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/northamerica-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/oceania-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/southamerica-2016.topo.json" />
+        <option value="$PROJECT_DIR$/geo/worldmap-2016.topo.json" />
+        <option value="$PROJECT_DIR$/views/ui-grid-pagination-no-pagesoption.html" />
+        <option value="$PROJECT_DIR$/.openshift/cron/hourly/ticktock.sh" />
+        <option value="$PROJECT_DIR$/dbtest.php" />
+        <option value="$PROJECT_DIR$/.openshift/cron/minutely/ticktock.sh" />
+        <option value="$PROJECT_DIR$/.openshift/cron/minutely/tt.sh" />
+        <option value="$PROJECT_DIR$/testUpdate.php" />
+        <option value="$PROJECT_DIR$/cronCRUL.php" />
+        <option value="$PROJECT_DIR$/.openshift/cron/minutely/curltest.sh" />
+        <option value="$PROJECT_DIR$/.openshift/cron/minutely/currencyupdate.sh" />
+        <option value="$PROJECT_DIR$/currencyupdate.log" />
+        <option value="$PROJECT_DIR$/.openshift/cron/hourly/currencyupdate.sh" />
+        <option value="$PROJECT_DIR$/bower.json" />
+        <option value="$PROJECT_DIR$/phpinfo.php" />
+        <option value="$PROJECT_DIR$/views/custom-foot-paginationcontrol.html" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/robots.txt" />
+        <option value="$PROJECT_DIR$/views/globe.html" />
+        <option value="$PROJECT_DIR$/views/northamerica.html" />
+        <option value="$PROJECT_DIR$/views/asia.html" />
+        <option value="$PROJECT_DIR$/views/europe.html" />
+        <option value="$PROJECT_DIR$/views/oceania.html" />
+        <option value="$PROJECT_DIR$/views/southamerica.html" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/views/africa.html" />
+        <option value="$PROJECT_DIR$/views/historytable.html" />
+        <option value="$PROJECT_DIR$/summaryUpdate.php" />
+        <option value="$PROJECT_DIR$/batch_summaryUpdate.php" />
+        <option value="$PROJECT_DIR$/recordFetch.php" />
+        <option value="$PROJECT_DIR$/currencyUpdate.php" />
+        <option value="$PROJECT_DIR$/pagestolen.html" />
+        <option value="$PROJECT_DIR$/sitemap.xml" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/time.html" />
+        <option value="$PROJECT_DIR$/views/chart.html" />
+        <option value="$PROJECT_DIR$/history.html" />
+        <option value="$PROJECT_DIR$/timechart.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/index-gulp.html" />
+        <option value="$PROJECT_DIR$/twoudia.css" />
+        <option value="$PROJECT_DIR$/twoudia.js" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBowerSettings">
+    <exe-path>C:\Users\Yannick\AppData\Roaming\npm\bower.cmd</exe-path>
+    <config-path>C:\Users\Yannick\Documents\My Web Sites\MobilePrice\bower.json</config-path>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-9" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1048" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>GeneralPHP</id>
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>PHPDocPHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Code StylePHP</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MobilePrice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MobilePrice" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.lastSelected" value="preferences.customizations" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="149" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="176" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="176" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="963" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="166" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="171" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="170" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="957" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="LayoutCode.rearrangeEntriesHTML" value="false" />
+    <property name="LayoutCode.rearrangeEntriesJavaScript 1.5" value="false" />
+    <property name="LayoutCode.rearrangeEntriesPHP" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Program Files (x86)\nodejs\node.exe" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
+    <property name="javascript.nodejs.core.library.configured.version" value="0.12.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\.well-known\acme-challenge" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\.openshift\cron\hourly" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\.openshift\cron\minutely" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\geo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\views" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\.openshift\cron\minutely" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\.openshift\cron\hourly" />
+      <recent name="C:\Users\Yannick\Documents\My Web Sites\MobilePrice\geo" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.twoudia.js">
+    <configuration default="false" name="twoudia.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="twoudia.js" working-dir="$PROJECT_DIR$">
+      <method />
+    </configuration>
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpSpecConfigurationType" factoryName="PHPSpec">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="4ebbb367-37d1-4412-b76e-6039b47ac7c8" server_name="MobilePrice-OpenShift">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.twoudia.js" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Node.js.twoudia.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="969a1492-9445-4372-9829-94654576bffa" name="Default" comment="" />
+      <created>1460552910000</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1460962662464</updated>
+      <workItem from="1465864273265" duration="1883000" />
+      <workItem from="1465904574808" duration="1390000" />
+      <workItem from="1465906000103" duration="227000" />
+      <workItem from="1465965692128" duration="12566000" />
+      <workItem from="1465994716419" duration="17938000" />
+      <workItem from="1466063657621" duration="308000" />
+      <workItem from="1466729700151" duration="3033000" />
+      <workItem from="1469845539168" duration="144000" />
+      <workItem from="1470217775998" duration="4581000" />
+      <workItem from="1470474354178" duration="397000" />
+      <workItem from="1471082341014" duration="36000" />
+      <workItem from="1471082677694" duration="23000" />
+      <workItem from="1472458210117" duration="7547000" />
+      <workItem from="1472479055250" duration="2217000" />
+      <workItem from="1472639229136" duration="1574000" />
+      <workItem from="1472696077487" duration="3961000" />
+      <workItem from="1472715054427" duration="174000" />
+      <workItem from="1473153612385" duration="4947000" />
+      <workItem from="1473683764084" duration="20000" />
+      <workItem from="1474180578376" duration="239000" />
+      <workItem from="1474203669963" duration="79000" />
+      <workItem from="1474715562985" duration="6000" />
+      <workItem from="1476600856328" duration="1628000" />
+      <workItem from="1476618663372" duration="923000" />
+      <workItem from="1476688079841" duration="598000" />
+      <workItem from="1476706283554" duration="1790000" />
+      <workItem from="1476869964498" duration="10637000" />
+      <workItem from="1476945285406" duration="53654000" />
+      <workItem from="1477057797818" duration="642000" />
+      <workItem from="1477104950180" duration="2535000" />
+      <workItem from="1477107496867" duration="1654000" />
+      <workItem from="1477109200496" duration="383000" />
+      <workItem from="1477650423655" duration="33000" />
+      <workItem from="1478002090108" duration="5756000" />
+      <workItem from="1478085381859" duration="18360000" />
+      <workItem from="1478167793684" duration="619000" />
+      <workItem from="1478516253105" duration="878000" />
+      <workItem from="1478582657272" duration="489000" />
+      <workItem from="1481266355290" duration="555000" />
+      <workItem from="1492062369801" duration="148000" />
+      <workItem from="1507545455260" duration="5356000" />
+      <workItem from="1507551741386" duration="1047000" />
+      <workItem from="1507552992147" duration="18000" />
+    </task>
+    <task id="LOCAL-00001" summary="Put the old Taiwan Map First. And modify the footer with TWOUDIA logo and the link.">
+      <created>1460559262459</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1460559262459</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update the map to global. and also install angular and angular-ui-bootstrap.">
+      <created>1460705540262</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1460705540262</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Make the Tabs work with D3, by using the angular-include with responding views and controllers. Also started with 2 php files for the tesing with SQLite sync.">
+      <created>1460903124057</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1460903124057</updated>
+    </task>
+    <task id="LOCAL-00004" summary="SQLite secure by SQLCipher">
+      <created>1460941256728</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1460962662369</updated>
+    </task>
+    <task id="LOCAL-00005" summary="PHP &lt;&gt; SQLite &lt;&gt; Open Exchange Rate API works.but need to implement the triggers in SQLite to make id value kept while updating records in ExchangeRate, Price tables.">
+      <created>1460996454896</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1460996454896</updated>
+    </task>
+    <task id="LOCAL-00006" summary="reformat the controller to put the generic D3 map build function into run part. Also modify the ui-grid for better layout. Also fixed the errors of database.">
+      <created>1461151741332</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1461151741332</updated>
+    </task>
+    <task id="LOCAL-00007" summary="fix the bugs in recordFetch.php (remove the redudant function of htmlescape). Add favicon and copyrights words in footer. Modified the opening sentences for better explaination.">
+      <created>1461329954499</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1461329954499</updated>
+    </task>
+    <task id="LOCAL-00008" summary="cron error should be fixed (by hardcode the absolute path of sqlite file in the update php ). Also complete two major brand price information.">
+      <created>1461482201503</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1461482201503</updated>
+    </task>
+    <task id="LOCAL-00009" summary="modified the popup message while clicking on map for those available areas.">
+      <created>1461560837728</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1461560837728</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add events binding on resize and orientation change. Also put tracking js for monitoring. And modify the layout for better UI.">
+      <created>1462101077723</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1462101077723</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Update DB with SONY, LG, MOTO, HTC. And also encode the parameters while query.">
+      <created>1462184829130</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1462184829130</updated>
+    </task>
+    <task id="LOCAL-00012" summary="minor bug in the south america map.">
+      <created>1462185225970</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1462185225970</updated>
+    </task>
+    <task id="LOCAL-00013" summary="make dropdown select using default value.">
+      <created>1462371671606</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1462371671606</updated>
+    </task>
+    <task id="LOCAL-00014" summary="change to Smart Table for responsive table solution.">
+      <created>1462372961714</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1462372961714</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Set default value for select dropdown.">
+      <created>1462374163742</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1462374163743</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Change Angular-UI-Grid to Angular-Smart-Table for better responsive solution.">
+      <created>1462374520267</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1462374520267</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fully smart table implemented.">
+      <created>1462409872716</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1462409872716</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Get rid of native Alert while clicking on D3 Map !! Using the same idea of Tip but with auto fadeout after 4sec. Also do some minor modifications on table display (thead and row hover color, also make the &quot;First&quot; and &quot;Last&quot; be colored on pagination).">
+      <created>1462459153894</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1462459153894</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Update the sorting, with indicates of which columns are sortable. Also disabled the sorting on origin price and update date.">
+      <created>1462461659020</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1462461659020</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Clean some useless codes and comments.">
+      <created>1462462677380</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1462462677380</updated>
+    </task>
+    <task id="LOCAL-00021" summary="put eight brands logos in footer. also change the footer images into a smaller size and converted as base64 in css.">
+      <created>1462716451947</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1462716451947</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Modify the database structure to add link information. Also updated the view htmls for the display of link info.">
+      <created>1462851706621</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1462851706621</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Merge branch 'smarttable'&#10;&#10;# Conflicts:&#10;#&#9;twoudia.js&#10;">
+      <created>1462852882314</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1462852882314</updated>
+    </task>
+    <task id="LOCAL-00024" summary="minified the js and css by gulp. Also add a page for 404 errors.">
+      <created>1462978087821</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1462978087821</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Updated the meta parts for SEO improvement.">
+      <created>1464008229297</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1464008229297</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add twitter card info of meta head.">
+      <created>1464085651129</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1464085651129</updated>
+    </task>
+    <task id="LOCAL-00027" summary="change footer logos, modify the display on mobile small viewport, and also make gulp auto clean the previous minimized files before generating.">
+      <created>1464257399954</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1464257399954</updated>
+    </task>
+    <task id="LOCAL-00028" summary="change footer logos, modify the display on mobile small viewport, and also make gulp auto clean the previous minimized files before generating.">
+      <created>1466057971015</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1466057971015</updated>
+    </task>
+    <task id="LOCAL-00029" summary="change footer logos, modify the display on mobile small viewport, and also make gulp auto clean the previous minimized files before generating.">
+      <created>1466058325264</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1466058325264</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Final corrections and modified for the display of those records with zero price. The History search and pages lost work well now.">
+      <created>1466063460987</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1466063460987</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Final corrections and modified for the display of those records with zero price. The History search and pages lost work well now.">
+      <created>1466063851310</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1466063851310</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Add Loading bar for http resource loading; also modify the search filter position on history table. There are some minor CSS modifications.">
+      <created>1466732733925</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1466732733925</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Change History Query. Add Brand as the first limitation criteria for lowering the time of data fetching.">
+      <created>1470224918825</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1470224918825</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Modified the SQLite DB. Create two temp. tables (t_pricetable and t_ratetable). The overall db size increased to 86MB, rather than original 2MB. But the query speed much lowers, from 6sec to 1sec. Also tried the use of MYSQL, but less efficiency and much convert jobs.">
+      <created>1472710263187</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1472710263187</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Append the codes in currencyUpdate to update the t_pricetable also.">
+      <created>1472715191007</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1472715191007</updated>
+    </task>
+    <task id="LOCAL-00036" summary="change website from HTTP to HTTPS. Also add README.md">
+      <created>1473157925030</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1473157925030</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Add a new page (timechart.html) to show the time chart for converted price analysis.">
+      <created>1477050620882</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1477050620882</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Build the result array for Charts. This would append records with zero price  for those products are discountinued in the countries.">
+      <created>1477108612487</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1477108612487</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Put these three missing files into Github with wrong  setting.&#10;">
+      <created>1477109136802</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1477109136802</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Minor modify: increase the right margin of chart svg, to make the last tick of x axis could present in whole.">
+      <created>1477109553727</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1477109553727</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix the error of showing nothing while mouse over x-grid of chart in timechart.html&#10;Also fix the logos css and hide the vendors while in mobile/tablet small screens.">
+      <created>1478010938277</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1478010938277</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Enhance the interactive on timechart.html with the idea from the animation of  PMSI-AlignAlytics (http://http://dimplejs.org/)">
+      <created>1478108305018</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1478108305018</updated>
+    </task>
+    <task id="LOCAL-00043" summary="ssl check and minor reformat of js.">
+      <created>1478516353177</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1478516353177</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
+    <option name="createBranch" value="false" />
+    <servers>
+      <GitHub shared="false" url="http://github.com">
+        <option name="assignedIssuesOnly" value="false" />
+        <commitMessageFormat>{id} {summary}</commitMessageFormat>
+        <password />
+        <token>df9cdfc8dfcbdfcedf9fdf98df99df9ddf9adf9ddf92dfc8dfcbdf99dfcbdf98df9fdf93df93dfccdf99df9ddf9edf9adfccdfcedf9fdf99dfccdf98dfc9df9bdf9cdf9adf9fdf93dfc8df92df9fdf9b</token>
+        <option name="loginAnonymously" value="false" />
+        <option name="preferredCloseTaskState" />
+        <option name="preferredOpenTaskState" />
+        <option name="repoAuthor" value="yannicklin" />
+        <option name="repoName" value="MobilePrice" />
+        <option name="shouldFormatCommitMessage" value="false" />
+        <option name="useHttpAuthentication" value="false" />
+        <option name="useProxy" value="false" />
+        <option name="user" value="yannicklin" />
+        <username />
+      </GitHub>
+    </servers>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="170993000" />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <layout>
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19206008" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2832618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32991204" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32794118" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32797858" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3250283" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24801812" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.67155427" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Command Line Tools Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46627566" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.117508814" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
+    <MESSAGE value="Get rid of native Alert while clicking on D3 Map !! Using the same idea of Tip but with auto fadeout after 4sec. Also do some minor modifications on table display (thead and row hover color, also make the &quot;First&quot; and &quot;Last&quot; be colored on pagination)." />
+    <MESSAGE value="Update the sorting, with indicates of which columns are sortable. Also disabled the sorting on origin price and update date." />
+    <MESSAGE value="Clean some useless codes and comments." />
+    <MESSAGE value="put eight brands logos in footer. also change the footer images into a smaller size and converted as base64 in css." />
+    <MESSAGE value="Modify the database structure to add link information. Also updated the view htmls for the display of link info." />
+    <MESSAGE value="Merge branch 'smarttable'&#10;&#10;# Conflicts:&#10;#&#9;twoudia.js&#10;" />
+    <MESSAGE value="minified the js and css by gulp. Also add a page for 404 errors." />
+    <MESSAGE value="Updated the meta parts for SEO improvement." />
+    <MESSAGE value="Add twitter card info of meta head." />
+    <MESSAGE value="change footer logos, modify the display on mobile small viewport, and also make gulp auto clean the previous minimized files before generating." />
+    <MESSAGE value="Final corrections and modified for the display of those records with zero price. The History search and pages lost work well now." />
+    <MESSAGE value="Add Loading bar for http resource loading; also modify the search filter position on history table. There are some minor CSS modifications." />
+    <MESSAGE value="Change History Query. Add Brand as the first limitation criteria for lowering the time of data fetching." />
+    <MESSAGE value="Modified the SQLite DB. Create two temp. tables (t_pricetable and t_ratetable). The overall db size increased to 86MB, rather than original 2MB. But the query speed much lowers, from 6sec to 1sec. Also tried the use of MYSQL, but less efficiency and much convert jobs." />
+    <MESSAGE value="Append the codes in currencyUpdate to update the t_pricetable also." />
+    <MESSAGE value="change website from HTTP to HTTPS. Also add README.md" />
+    <MESSAGE value="Add a new page (timechart.html) to show the time chart for converted price analysis." />
+    <MESSAGE value="Build the result array for Charts. This would append records with zero price  for those products are discountinued in the countries." />
+    <MESSAGE value="Put these three missing files into Github with wrong ignority setting." />
+    <MESSAGE value="Put these three missing files into Github with wrong ignority setting.&#10;" />
+    <MESSAGE value="Put these three missing files into Github with wrong  setting.&#10;" />
+    <MESSAGE value="Minor modify: increase the right margin of chart svg, to make the last tick of x axis could present in whole." />
+    <MESSAGE value="Fix the error of showing nothing while mouse over x-grid of chart in timechart.html&#10;Also fix the logos css and hide the vendors while in mobile/tablet small screens." />
+    <MESSAGE value="Enhance the interactive on timechart.html with the idea from the animation of  PMSI-AlignAlytics (http://http://dimplejs.org/)" />
+    <MESSAGE value="ssl check and minor reformat of js." />
+    <option name="LAST_COMMIT_MESSAGE" value="ssl check and minor reformat of js." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="8" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/weekly/chronograph" />
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/weekly/chrono.dat" />
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/weekly/jobs.deny" />
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/weekly/jobs.allow" />
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/weekly/README" />
+    <entry file="file://$PROJECT_DIR$/.openshift/README.md" />
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/README.cron" />
+    <entry file="file://$PROJECT_DIR$/lib/angular-filter/license.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/angular-filter/.travis.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/angular-filter/dist/angular-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="1447" column="12" lean-forward="false" selection-start-line="1447" selection-start-column="9" selection-end-line="1447" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/worldmap-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="49464" lean-forward="false" selection-start-line="0" selection-start-column="49464" selection-end-line="0" selection-end-column="49464" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/southamerica-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="5110" lean-forward="false" selection-start-line="0" selection-start-column="5110" selection-end-line="0" selection-end-column="5110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/oceania-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="3412" lean-forward="false" selection-start-line="0" selection-start-column="3412" selection-end-line="0" selection-end-column="3412" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/northamerica-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14002" lean-forward="false" selection-start-line="0" selection-start-column="14002" selection-end-line="0" selection-end-column="14002" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/europe-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14055" lean-forward="false" selection-start-line="0" selection-start-column="14055" selection-end-line="0" selection-end-column="14055" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/africa-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14018" lean-forward="false" selection-start-line="0" selection-start-column="14018" selection-end-line="0" selection-end-column="14018" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/geo/asia-2016.topo.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="16474" lean-forward="false" selection-start-line="0" selection-start-column="16474" selection-end-line="0" selection-end-column="16474" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/pear.txt" />
+    <entry file="file://$PROJECT_DIR$/favicon.ico">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/custom-foot-paginationcontrol.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="7" column="104" lean-forward="false" selection-start-line="7" selection-start-column="104" selection-end-line="7" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/robots.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="10" column="21" lean-forward="false" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/jshint/src/options.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="558" column="22" lean-forward="false" selection-start-line="558" selection-start-column="22" selection-end-line="558" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/europe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/oceania.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/southamerica.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="35" column="12" lean-forward="false" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/northamerica.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="22" column="69" lean-forward="false" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/globe.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-200">
+          <caret line="6" column="56" lean-forward="false" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.bowerrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="16" lean-forward="false" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bower.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/historytable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/batch_summaryUpdate.php" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="150">
+            <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.openshift/cron/hourly/currencyupdate.sh" />
+    <entry file="file://$PROJECT_DIR$/views/asia.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="1" column="40" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recordFetch.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="28" column="56" lean-forward="false" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/chart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="10" lean-forward="false" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sitemap.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/timechart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="28" column="41" lean-forward="false" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/currencyUpdate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="34" column="47" lean-forward="true" selection-start-line="34" selection-start-column="47" selection-end-line="34" selection-end-column="47" />
+          <folding>
+            <marker date="1472715130216" expanded="true" signature="2951:3631" ph="SELECT v_pro... price" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="99" column="18" lean-forward="false" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="10" column="34" lean-forward="true" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3182">
+          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index-gulp.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="84" column="38" lean-forward="false" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/africa.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-41">
+          <caret line="0" column="24" lean-forward="false" selection-start-line="0" selection-start-column="24" selection-end-line="0" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twoudia.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/twoudia.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="58" column="46" lean-forward="false" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pagestolen.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="94" column="113" lean-forward="false" selection-start-line="94" selection-start-column="113" selection-end-line="94" selection-end-column="113" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.htaccess">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
